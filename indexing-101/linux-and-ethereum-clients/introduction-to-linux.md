@@ -627,10 +627,84 @@ The `dtrx` command is a tool used for extracting various archive file formats. I
 ## Create and manage permissions, security, and services
 
 ### chmod
+`chmod` is a command used in Linux/Unix to change the permissions of files or directories. It allows the user to grant or revoke read, write, and execute permissions to themselves, their group, or others. The permissions can be set using numerical values or symbols such as u (user), g (group), o (others), and a (all).
+
+1. Set read, write, and execute permissions for the owner, and only read and execute permissions for the group and others:
+    ``` bash
+    chmod 755 filename
+    ```
+
+2. Remove write permission for the group and others:
+    ``` bash
+    chmod go-w filename
+    ```
+
+3. Add execute permission for the owner and group:
+    ``` bash
+    chmod ug+x filename
+    ```
+
+4. Set read and write permissions for the owner and group, but no permissions for others:
+    ``` bash
+    chmod ug=rw,o= filename
+    ```
+
+5. Recursively change the permissions for all files and directories in a directory:
+    ``` bash
+    chmod -R 755 directory
+    ```
+
 
 ### chown
+The `chown` command is used in Linux/Unix to change the owner and/or group ownership of a file or directory. This command is particularly useful when transferring files or granting permissions. It allows the administrator to specify who can read, write, or execute the file/directory.
+
+1. Change the ownership of a file to a specific user and group:
+    ``` bash
+    chown user:group file.txt
+    ```
+    > Note: This command changes the ownership of file.txt to the user user and the group group.
+
+2. Change the ownership of a directory and all of its contents:
+    ``` bash
+    chown -R user:group /path/to/directory
+    ```
+    > Note: This command recursively changes the ownership of the directory /path/to/directory and all of its contents to the user user and the group group.
+
+3. Change the ownership of a file to the current user:
+    ``` bash
+    chown $USER file.txt
+    ```
+    > Note: This command changes the ownership of file.txt to the current user.
+
+4. Change the ownership of a file to the root user:
+    ``` bash
+    sudo chown root file.txt
+    ```
+    > Note: This command changes the ownership of file.txt to the root user.
+
+
 
 ### whoami
+The `whoami` command in Linux displays the current username of the user who is logged in to the system. It is a simple and useful command that can be used to verify the identity of the current user.
+
+1. To display the current user name:
+    ``` bash
+    whoami
+    ```
+
+2. To use the whoami output in a script:
+    ``` bash
+    user=$(whoami)
+    echo "Hello, $user!"
+    ```
+    > Note: This script will output a greeting message that includes the current user name.
+
+3. To check if the current user has sudo privileges:
+    ``` bash
+    if [[ $(whoami) == "root" ]]; then echo "I have sudo privileges"; else echo "I don't have sudo privileges"; fi
+    ```
+    > Note: This command will check if the current user is "root" and print a message accordingly.
+
 
 ### adduser
 
