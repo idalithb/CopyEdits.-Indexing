@@ -457,6 +457,50 @@ The `rm` command in Unix-like operating systems is used to remove or delete file
 ### wget
 `wget` is a tool used to download files from the internet. It supports various protocols such as HTTP, HTTPS, and FTP. Its basic syntax is `wget [options] [URL]`. The `options` parameter represents any additional options you want to use with the command, and the `URL` parameter represents the URL of the file you want to download. `wget` is a powerful tool that can be used to download large files, recursively download entire directories, and continue interrupted downloads.
 
+1. Download a file from a URL:
+    ``` bash
+    wget https://example.com/file.zip
+    ```
+
+2. Download a file and save it with a different name:
+    ``` bash
+    wget -O newfile.zip https://example.com/file.zip
+    ```
+    
+3. Download a file and continue the download if it is interrupted:
+    ``` bash
+    wget -c https://example.com/largefile.iso
+    ```
+
+4. Download multiple files from a URL:
+    ``` bash
+    wget -i urls.txt
+    ```
+    > Note: where urls.txt is a text file containing one URL per line.
+
+
+
+5. Limit the download speed:
+    ``` bash
+    wget --limit-rate=500k https://example.com/largefile.iso
+    ```
+
+6. Download a file over FTP:
+    ``` bash
+    wget ftp://ftp.example.com/file.zip
+    ```
+
+7. Download a file using a proxy server:
+    ``` bash
+    wget --proxy=on --proxy-user=user --proxy-password=pass https://example.com/file.zip
+    ```
+
+
+
+
+
+
+
 ### screen
 `screen` is a terminal multiplexer that allows you to create and manage multiple terminal sessions within a single window. With `screen`, you can run multiple shell instances, detach from them and reattach to them later, and share sessions with other users. Once inside a screen session, you can use various keyboard shortcuts to navigate between multiple windows, split screens, and perform other tasks. `screen` is particularly useful for remote server management or for running long-running processes that you want to keep running even if you log out of your shell.
 
@@ -503,11 +547,114 @@ The `rm` command in Unix-like operating systems is used to remove or delete file
 
 
 ### tar
-`tar`
+The `tar` command is used for archiving and compressing files in a single file, often called a "tarball". It is a command-line utility commonly used in Linux and Unix operating systems.
+
+1. To create a compressed tarball of a directory and its contents:
+    ``` bash
+    tar -czvf myfiles.tar.gz /path/to/my/directory/
+    ```
+
+2. To extract a compressed tarball to a specific directory:
+    ``` bash
+    tar -xzvf myfiles.tar.gz -C /path/to/extracted/directory/
+    ```
+
+3. To add a file to an existing tarball:
+    ``` bash
+    tar -rvf myfiles.tar /path/to/newfile.txt
+    ```
+
+4. To extract a specific file from an existing tarball:
+    ``` bash
+    tar -xvf myfiles.tar /path/to/file.txt
+    ```
+
+5. To create an incremental backup of a directory using a dated tarball filename:
+    ``` bash
+    tar -czvf myfiles-$(date +%Y%m%d).tar.gz --listed-incremental=/path/to/backup.snar /path/to/my/directory/
+    ```
+
 
 ### unzip
-`unzip`
+The `unzip` command is used to extract files from a compressed archive in the ZIP format. Here's a short explanation:
+
+1. To extract all files from an archive named archive.zip:
+    ``` bash
+    unzip archive.zip
+    ```
+
+2. To extract a specific file named example.txt from an archive named archive.zip:
+    ``` bash
+    unzip archive.zip example.txt
+    ```
+
+3. To extract an archive named archive.zip into a directory named extracted_files:
+    ``` bash
+    unzip archive.zip -d extracted_files/
+    ```
+
+4. To list the contents of an archive named archive.zip without extracting them:
+    ``` bash
+    unzip -l archive.zip
+    ```
+
 
 ### dtrx
-`dtrx`
+The `dtrx` command is a tool used for extracting various archive file formats. It can automatically detect the archive type and use the appropriate extraction tool. It can also handle nested archives, and can extract files to a specific directory.
+
+1. To extract a single archive file named `archive.tar.gz` to the current directory:
+    ``` bash
+    dtrx archive.tar.gz
+    ```
+
+2. To extract a nested archive file named `nested_archive.zip` that is located within another archive file named `archive.tar.gz` to the current directory:
+    ``` bash
+    dtrx archive.tar.gz
+    cd archive
+    dtrx nested_archive.zip
+    ```
+
+3. To extract a single archive file named `archive.tar.bz2` to a specific directory named `my_folder`:
+    ``` bash
+    dtrx -n my_folder archive.tar.bz2
+    ```
+
+4. To list the contents of an archive file named archive.tar.gz without extracting them:
+    ``` bash
+    dtrx -l archive.tar.gz
+    ```
+
+## Create and manage permissions, security, and services
+
+### chmod
+
+### chown
+
+### whoami
+
+### adduser
+
+### usermod
+
+### su
+
+### ssh
+
+### ssh-keygen
+
+### ufw
+
+### systemctl
+
+## Some helpful commands
+
+### sudo !!
+
+### netstat
+
+### df
+
+### openssl
+
+
 
