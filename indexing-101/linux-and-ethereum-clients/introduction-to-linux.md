@@ -648,13 +648,27 @@ The `dtrx` command is a tool used for extracting various archive file formats. I
 
 ## Some helpful commands
 
-### sudo !!
+### sudo
+
+### !!
+
+### top
+
+### ps
+
+### grep
 
 ### netstat
+
+### ifconfig
+
+### iptables
 
 ### df
 
 ### openssl
+
+### rsync
 
 
 
