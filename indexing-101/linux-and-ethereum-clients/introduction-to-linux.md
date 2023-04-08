@@ -432,10 +432,75 @@ The `rm` command in Unix-like operating systems is used to remove or delete file
 
 
 ### curl
-`curl`
+`curl` is a tool used to transfer data to or from a server, using one of several supported protocols, including HTTP, FTP, and SMTP. The basic syntax of the `curl` command is `curl [options] [URL]`. The `options` parameter represents any additional options you want to use with the command, and the `URL` parameter represents the URL of the server you want to communicate with.
+
+1. To retrieve the contents of a web page:
+    ``` bash
+    curl https://example.com
+    ```
+    > Note: This will retrieve the contents of the web page at https://example.com and display it in the terminal.
+
+2. To download a file from a server:
+    ``` bash
+    curl -O https://example.com/file.txt
+    ```
+    > Note: This will download the file named file.txt from the server at https://example.com and save it to the current directory.
+
+3. To upload a file to a server:
+    ``` bash
+    curl -F "file=@/path/to/file.txt" https://example.com/upload.php
+    ```
+    > Note: This will upload the file located at /path/to/file.txt to the server at https://example.com/upload.php using a POST request.
+
+
 
 ### wget
-`wget`
+`wget` is a tool used to download files from the internet. It supports various protocols such as HTTP, HTTPS, and FTP. Its basic syntax is `wget [options] [URL]`. The `options` parameter represents any additional options you want to use with the command, and the `URL` parameter represents the URL of the file you want to download. `wget` is a powerful tool that can be used to download large files, recursively download entire directories, and continue interrupted downloads.
+
+### screen
+`screen` is a terminal multiplexer that allows you to create and manage multiple terminal sessions within a single window. With `screen`, you can run multiple shell instances, detach from them and reattach to them later, and share sessions with other users. Once inside a screen session, you can use various keyboard shortcuts to navigate between multiple windows, split screens, and perform other tasks. `screen` is particularly useful for remote server management or for running long-running processes that you want to keep running even if you log out of your shell.
+
+1. Start a new screen session with a specific name:
+    ``` bash
+    screen -S mysession
+    ```
+
+2. Detach from a screen session:
+    ``` text
+    Press `Ctrl-a` followed by the `d` key.
+    ```
+
+3. Reattach to a detached screen session:
+    ``` bash
+    screen -r mysession
+    ```
+    
+4. Create a new window within a screen session:
+    ``` text
+    Press `Ctrl-a` followed by the `c` key.
+    ```
+
+5. Switch between windows in a screen session:
+    ``` text
+    Press `Ctrl-a` followed by the `n` key to move to the next window
+    or `Ctrl-a` followed by the `p` key to move to the previous window.
+    ```
+    
+6. Split the screen horizontally:
+    ``` text
+    Press `Ctrl-a` followed by the `S` key.
+    ```
+
+7. Split the screen vertically:
+    ``` text
+    Press `Ctrl-a` followed by the `|` key.
+    ```
+
+8. List available screen sessions:
+    ``` bash
+    screen -ls
+    ```
+
 
 ### tar
 `tar`
