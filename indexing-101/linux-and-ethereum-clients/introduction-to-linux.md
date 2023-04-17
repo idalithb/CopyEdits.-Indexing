@@ -1111,6 +1111,65 @@ The `grep` command is a command-line utility for searching for a specific patter
     ```
 
 ### ifconfig
+The `ifconfig` command is a network configuration tool used to display and manage network interface configuration. It shows the status of the network interfaces available on a system and can be used to configure and troubleshoot network-related problems. With the `ifconfig command`, you can view the IP address, netmask, and other network-related information about each interface on the system. You can also use it to assign an IP address, enable or disable an interface, and configure other network-related settings.
+
+1. To display the configuration of all network interfaces:
+    ``` bash
+    ifconfig -a
+    ```
+
+1. To display only the IP addresses of all network interfaces:
+    ``` bash
+    ifconfig | grep 'inet '
+    ```
+
+1. To configure a network interface with a specific IP address:
+    ``` bash
+    sudo ifconfig eth0 192.168.1.100 netmask 255.255.255.0
+    ```
+
+1. To bring up a network interface that is currently down:
+    ``` bash
+    sudo ifconfig eth0 up
+    ```
+
+1. To bring down a network interface:
+    ``` bash
+    sudo ifconfig eth0 down
+    ```
+
+### ip
+The `ip` command is used for configuring and displaying network interfaces and routing tables in Linux. It is a replacement for the older `ifconfig` command and provides more advanced and detailed information about network configurations. It can be used for assigning IP addresses to interfaces, setting up routes, configuring VLANs, tunnels, and bridges, and managing network namespaces.
+
+1. To show the IP address of a network interface:
+    ``` bash
+    ip address show eth0
+    ```
+
+1. To set the IP address of a network interface:
+    ``` bash
+    ip address add 192.168.1.10/24 dev eth0
+    ```
+
+1. To delete an IP address from a network interface:
+    ``` bash
+    ip address del 192.168.1.10/24 dev eth0
+    ```
+
+1. To show the routing table:
+    ``` bash
+    ip route show
+    ```
+
+1. To add a route to the routing table:
+    ``` bash
+    ip route add 192.168.2.0/24 via 192.168.1.1 dev eth0
+    ```
+
+1. To delete a route from the routing table:
+    ``` bash
+    ip route del 192.168.2.0/24 via 192.168.1.1 dev eth0
+    ```
 
 ### iptables
 
