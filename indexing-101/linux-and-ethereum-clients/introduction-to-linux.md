@@ -1042,9 +1042,6 @@ The `ps` command in Linux is used to display information about the running proce
 ### grep
 The `grep` command is a command-line utility for searching for a specific pattern or regular expression in a file or output. It can be used to search for specific strings in a single file or across multiple files. The command returns the lines containing the search string and is commonly used in conjunction with other commands in a pipeline.
 
-
-
-### netstat
 1. Search for the pattern in the specified file and displays all lines that contain the pattern.
     ``` bash
     grep pattern file.txt
@@ -1070,6 +1067,48 @@ The `grep` command is a command-line utility for searching for a specific patter
     history | grep command_name
     ```
 
+### netstat
+`netstat` (network statistics) is a command-line tool used to display various information about network connections, routing tables, and network interfaces on a Linux system. It can be used to view active network connections, check listening ports, display network statistics, and monitor network activity. This information can be helpful in troubleshooting network issues, monitoring network traffic, and identifying network security threats.
+
+1. Show all active network connections and the processes that are listening on those connections.
+    ``` bash
+    netstat -tulpn
+    ```
+
+1. Display the kernel routing table.
+    ``` bash
+    netstat -r
+    ```
+
+1. Display statistics for each protocol.
+    ``` bash
+    netstat -s
+    ```
+
+1. Display all active network connections, both listening and non-listening.
+    ``` bash
+    netstat -a
+    ```
+
+1. Display all listening network connections.
+    ``` bash
+    netstat -l
+    ```
+
+1. Display network addresses as numbers rather than host and domain names
+    ``` bash
+    netstat -n
+    ```
+
+1. Display the process ID and name of the program using each network connection.
+    ``` bash
+    netstat -p
+    ```
+
+1. Display a continuous stream of network connection information.
+    ``` bash
+    netstat -c
+    ```
 
 ### ifconfig
 
