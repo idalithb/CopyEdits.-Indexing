@@ -1235,6 +1235,38 @@ The `ip` command is used for configuring and displaying network interfaces and r
 
 ### df
 
+`df` (Disk Free) is a command in Linux/Unix systems used to display the amount of available and used disk space on a file system. It provides information about the total size of a filesystem, the amount of free space available, and the amount of space used by each directory and file within that filesystem. It is often used to identify file systems that are running low on disk space.
+
+1. Show the disk space usage information for all mounted file systems
+    ``` bash
+    df
+    ```
+
+1. Show the disk space usage information in a human-readable format (e.g. in gigabytes, megabytes, etc.)
+    ``` bash
+    df -h
+    ```
+
+1. Show the disk space usage information along with the file system type
+    ``` bash
+    df -T
+    ```
+
+1. Show the inode usage information for file systems
+    ``` bash
+    df -i
+    ```
+
+1. Shoq the disk space usage information for all file systems, including those that are not mounted yet
+    ``` bash
+    df -a
+    ```
+
+1. Shows the disk space usage information for a specific file system (in this example, /dev/sda1)
+    ``` bash
+    df /dev/sda1
+    ```
+
 ### openssl
 
 ### rsync
