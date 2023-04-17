@@ -707,12 +707,147 @@ The `whoami` command in Linux displays the current username of the user who is l
 
 
 ### adduser
+The `adduser` command in Linux is used to create a new user account on the system. It prompts for the user's name and password, creates a home directory, and adds the user to the system. The command also allows for additional options such as specifying the user's group or setting a custom home directory.
+
+1. To add a new user account with default settings:
+    ``` bash
+    sudo adduser username
+    ```
+
+1. To add a new user account and set the home directory:
+    ``` bash
+    sudo adduser --home /home/newuser username
+    ```
+
+1. To add a new user account with a specific user ID (UID):
+    ``` bash
+    sudo adduser --uid 1001 username
+    ```
+
+1. To add a new user account with a specific group ID (GID):
+    ``` bash
+    sudo adduser --gid 1001 username
+    ```
+
+1. To add a new user account and specify additional groups:
+    ``` bash
+    sudo adduser --groups group1,group2 username
+    ```
+Note: The adduser command may vary depending on the Linux distribution and version being used. It is recommended to refer to the documentation for the specific system to ensure proper usage.
 
 ### usermod
+The `usermod` command in Linux is used to modify user account attributes such as username, home directory, login shell, and group membership. It is used to make changes to an existing user account.
+
+1. Change the username of an existing user:
+    ``` bash
+    sudo usermod -l newusername oldusername
+    ```
+
+1. Add a user to a secondary group:
+    ``` bash
+    sudo usermod -a -G groupname username
+    ```
+
+1. Remove a user from a secondary group:
+    ``` bash
+    sudo usermod -G groupname1,groupname2 username
+    ```
+
+1. Lock or unlock a user account:
+    ``` bash
+    sudo usermod -L username
+    sudo usermod -U username
+    ```
+
+1. Change the default shell for a user:
+    ``` bash
+    sudo usermod -s /bin/zsh username
+    ```
+
+### sudo
+`sudo` is a command used in Linux to grant temporary root privileges to a normal user account. It allows users to execute commands with elevated privileges without logging in as the root user. The user running the `sudo` command will need to enter their own password to confirm their identity. This helps to improve security by allowing administrators to grant certain privileges to users without giving them full administrative access.
+
+1. Updates the list of available packages and their versions from the server:
+    ``` bash
+    sudo apt-get update
+    ```
+
+1. Installs a package with administrative privileges:
+    ``` bash
+    sudo apt-get install <package_name>
+    ```
+
+1. Restarts a system service:
+    ``` bash
+    sudo systemctl restart <service_name>
+    ```
+
+1. Adds a new user to the system:
+    ``` bash
+    sudo useradd <username>
+    ```
+
+1. Changes the file permission to allow read, write, and execute for the owner, and only read and execute for others.
+    ``` bash
+    sudo chmod 755 <file_name>
+    ```
 
 ### su
+The `su` (short for "substitute user") command is used to switch to another user account or to run commands with a different user's privileges. When executed without specifying a username, it will switch to the root user. The `su` command is often used by system administrators to perform administrative tasks that require elevated privileges. It is also commonly used to temporarily switch to another user's account in order to run commands or perform tasks as that user.
+
+1. To switch to the root user:
+    ``` bash
+    su -
+    ```
+
+1. To switch to another user, such as "jdoe":
+    ``` bash
+    su - jdoe
+    ```
+
+1. To switch to a user without changing the current working directory:
+    ``` bash
+    su jdoe
+    ```
+
+1. To switch to a user and run a specific command as that user:
+    ``` bash
+    su - jdoe -c "ls -l"
+    ```
+
+1. To switch to a user and start a new shell session as that user:
+    ``` bash
+    su - jdoe -s /bin/bash
+    ```
 
 ### ssh
+The `ssh` command is used to establish a secure shell connection to a remote server. It allows a user to log in to a remote machine and execute commands on it securely. The command uses encryption to protect the communication between the client and the server, preventing unauthorized access to sensitive information.
+
+1. To connect to a remote server with username and IP address: 
+    ``` bash
+    ssh username@ip_address
+    ```
+
+1. To connect to a remote server with a specific port: 
+    ``` bash
+    ssh -p port_number username@ip_address
+    ```
+
+1. To specify a private key file for authentication: 
+    ``` bash
+    ssh -i /path/to/private_key username@ip_address
+    ```
+
+1. To run a command on a remote server:
+    ``` bash
+    ssh username@ip_address command
+    ```
+
+1. To copy a file from a remote server to a local machine:
+    ``` bash
+    scp username@ip_address:/path/to/remote/file /path/to/local/file
+    ```
+
 
 ### ssh-keygen
 
