@@ -1017,6 +1017,27 @@ The `top` command is a Linux utility that provides real-time information about t
 1. To change the color scheme, press the F2 key and select "Colors" from the menu. You can then select a pre-defined color scheme or customize your own.
 
 ### ps
+The `ps` command in Linux is used to display information about the running processes on a system. It can be used to view the currently running processes, their process IDs (PIDs), and other information such as their CPU and memory usage.
+
+1. Display a list of all running processes with additional information:
+    ``` bash
+    ps aux
+    ```
+
+1. Display a process tree for all running processes:
+    ``` bash
+    ps ef
+    ```
+
+1. Display information for a specific process ID:
+    ``` bash
+    ps -p 1234
+    ```
+
+1. Display all processes owned by a specific user:
+    ``` bash
+    ps -u username
+    ```
 
 ### grep
 
