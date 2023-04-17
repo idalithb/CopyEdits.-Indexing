@@ -1269,7 +1269,66 @@ The `ip` command is used for configuring and displaying network interfaces and r
 
 ### openssl
 
+`openssl` is a command-line tool used for working with secure communications over networks using SSL/TLS protocols. It provides various cryptographic functions such as generating and verifying digital signatures, creating and verifying SSL/TLS connections, generating and encrypting private keys, and more.
+
+1. Generate a new private key
+    ``` bash
+    openssl genpkey -algorithm RSA -out private_key.pem -aes256
+    ```
+ 
+1. Generate a self-signed certificate:
+    ``` bash
+    openssl req -new -x509 -key private_key.pem -out public_cert.pem -days 365
+    ```
+
+1. Verify a certificate
+    ``` bash
+    openssl verify public_cert.pem
+    ```
+
+1. Encrypt a file with a password: 
+    ``` bash
+    openssl enc -aes-256-cbc -salt -in file.txt -out file.txt.enc
+    ```
+
+1. Decrypt a file:
+    ``` bash
+    openssl enc -d -aes-256-cbc -in file.txt.enc -out file.txt
+    ```
+
 ### rsync
+
+The `rsync` command is used for file synchronization and transfer between multiple systems. It can transfer files over SSH or a direct network connection and is designed to be fast and efficient. The command can also perform incremental backups and only transfer the changed parts of a file, reducing network traffic and improving transfer speed.
+
+1. Copy files from local to remote server:
+    ``` bash
+    rsync -avz /path/to/local/folder/ user@remote:/path/to/remote/folder/
+    ```
+
+1. Copy files from remote to local server:
+    ``` bash
+    rsync -avz user@remote:/path/to/remote/folder/ /path/to/local/folder/
+    ```
+
+1. Sync two folders on the same server:
+    ``` bash
+    rsync -avz /path/to/source/folder/ /path/to/destination/folder/
+    ```
+
+1. Exclude certain files or directories:
+    ``` bash
+    rsync -avz --exclude='*.log' /path/to/source/folder/ /path/to/destination/folder/
+    ```
+
+1. Copy files in archive mode:
+    ``` bash
+    rsync -avz --archive /path/to/source/folder/ /path/to/destination/folder/
+    ```
+
+1. Delete files on the destination that do not exist on the source:
+    ``` bash
+    rsync -avz --delete /path/to/source/folder/ /path/to/destination/folder/
+    ```
 
 
 
