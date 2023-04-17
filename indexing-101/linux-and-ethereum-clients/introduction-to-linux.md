@@ -977,8 +977,44 @@ The `ssh-keygen` command is used to generate SSH keys for secure authentication 
 ## Some helpful commands
 
 ### !!
+The `!!` command is a shell shortcut that allows you to repeat the previous command. It simply executes the previous command in the command history. It is a quick way to repeat a command without having to type it out again.
+
+1. Suppose you mistakenly entered a command as a non-root user that required root permissions. You can use `sudo !!` to quickly execute the same command as root.
+
+
+1. If you want to repeat a command with slight modifications, you can use `!!` and then edit the command to suit your needs.
+
+1. If you accidentally typed a command incorrectly, you can use `!!` to repeat the corrected version of the command.
+
 
 ### top
+The `top` command is a Linux utility that provides real-time information about the processes that are currently running on the system, as well as information about the system's overall resource usage. It displays a dynamic, ordered list of running processes and updates it periodically. The `top` command is often used by system administrators to monitor the system's performance and identify processes that are consuming too many resources.
+
+1. Simply run `top` to view a real-time dynamic display of the system's processes.
+
+1. Use `top -u username` to display all processes that belong to a particular user.
+
+1. To sort processes by CPU usage, press the "P" key. To sort by memory usage, press "M". To sort by process ID, press "N". To switch between ascending and descending order, press "R".
+
+1. Use the `top -H` command to display individual threads of processes.
+
+1. Use `top -p PID` to view the information of a particular process using its PID.
+
+
+### htop
+`htop` is a command-line utility for monitoring system resources on Linux. It is an improved version of the `top` command and provides a more user-friendly and interactive way of viewing and managing processes and system resource usage.
+
+1. To start `htop` in interactive mode, simply run the command `htop` in the terminal.
+
+1. To sort the processes by CPU usage, press the F6 key, select the "PERCENT_CPU" option, and press Enter.
+
+1. To search for a specific process, press the F3 key and enter the name of the process in the search field.
+
+1. To kill a process, select it using the arrow keys and press the F9 key. Then, select the signal you want to send to the process (e.g. SIGTERM or SIGKILL) and press Enter.
+
+1. To monitor a specific user's processes, press the F4 key and enter the username in the "Setup filter" field.
+
+1. To change the color scheme, press the F2 key and select "Colors" from the menu. You can then select a pre-defined color scheme or customize your own.
 
 ### ps
 
