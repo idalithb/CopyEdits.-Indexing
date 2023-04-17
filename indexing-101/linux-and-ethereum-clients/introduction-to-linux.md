@@ -1172,6 +1172,66 @@ The `ip` command is used for configuring and displaying network interfaces and r
     ```
 
 ### iptables
+`iptables` is a powerful command-line tool used to manage the Linux firewall. It allows you to set up rules and filters to control network traffic coming into and out of your system. Using `iptables`, you can create rules to accept or reject traffic based on various criteria such as the source IP address, destination IP address, protocol, and port number.
+
+1. Allow all incoming traffic from a specific IP address:
+    ``` bash
+    iptables -A INPUT -s 192.168.1.100 -j ACCEPT
+    ```
+
+1. Block all incoming traffic from a specific IP address:
+    ``` bash
+    iptables -A INPUT -s 192.168.1.100 -j DROP
+    ```
+
+1. Allow all traffic to a specific port:
+    ``` bash
+    iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+    ```
+
+1. Block all traffic to a specific port:
+    ``` bash
+    iptables -A INPUT -p tcp --dport 22 -j DROP
+    ```
+
+1. Allow all traffic on the loopback interface:
+    ``` bash
+    iptables -A INPUT -i lo -j ACCEPT
+    ```
+
+1. Block all traffic from a specific network interface:
+    `` bash
+    iptables -A INPUT -i eth0 -j DROP
+    ```
+
+### nftables
+`nftables` is a command-line utility in Linux used to manage the Netfilter firewall subsystem. It is designed to replace the previous iptables tool. It provides a simpler and more expressive syntax, improved performance, and enhanced features for managing network traffic. Using `nftables`, you can configure firewall rules and filters, create network address translation (NAT) rules, and perform packet mangling. It allows you to filter and modify network packets based on various criteria such as IP addresses, ports, protocols, and packet content.
+
+
+1. Add a rule to the filter table of nftables that allows incoming TCP traffic on port 22 (SSH) to be accepted.
+    ``` bash
+    nft add rule filter input tcp dport 22 accept
+    ```
+
+1. List all the rules that are currently configured in the nftables ruleset.
+    ``` bash
+    nft list ruleset
+    ```
+
+1. Create a new table named nat in the nftables ruleset.
+    ``` bash
+    nft add table nat
+    ```
+
+1. Add a new chain named prerouting to the nat table that is triggered before the routing decision is made
+    ``` bash
+    nft add chain nat prerouting { type nat hook prerouting priority 0; }
+    ```
+
+1. Add a rule to the prerouting chain that redirects incoming TCP traffic on port 80 to the IP address 192.168.1.2.
+    ``` bash
+    nft add rule nat prerouting tcp dport 80 dnat 192.168.1.2
+    ```
 
 ### df
 
