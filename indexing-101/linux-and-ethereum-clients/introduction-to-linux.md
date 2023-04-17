@@ -1040,8 +1040,36 @@ The `ps` command in Linux is used to display information about the running proce
     ```
 
 ### grep
+The `grep` command is a command-line utility for searching for a specific pattern or regular expression in a file or output. It can be used to search for specific strings in a single file or across multiple files. The command returns the lines containing the search string and is commonly used in conjunction with other commands in a pipeline.
+
+
 
 ### netstat
+1. Search for the pattern in the specified file and displays all lines that contain the pattern.
+    ``` bash
+    grep pattern file.txt
+    ```
+
+1. Search for the pattern in the specified file, ignoring case sensitivity:
+    ``` bash
+    grep -i pattern file.txt
+    ```
+
+1. Search for the pattern recursively in all files within the specified directory and its subdirectories.
+    ``` bash
+    grep -r pattern /directory
+    ```
+
+1. List all running processes and filters the output to display only the process with the specified name.
+    ``` bash
+    ps -ef | grep process_name
+    ```
+
+1. Search through the command history and displays only the commands that contain the specified name.
+    ``` bash
+    history | grep command_name
+    ```
+
 
 ### ifconfig
 
