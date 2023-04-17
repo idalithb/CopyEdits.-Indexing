@@ -850,14 +850,131 @@ The `ssh` command is used to establish a secure shell connection to a remote ser
 
 
 ### ssh-keygen
+The `ssh-keygen` command is used to generate SSH keys for secure authentication between remote systems. It creates a public and private key pair that can be used to authenticate with a remote system without requiring a password. The private key is kept on the local system and the public key is added to the remote system's authorized keys file.
+
+1. Generate a new RSA key pair with the default settings:
+    ``` bash
+    ssh-keygen
+    ```
+
+1. Generate a new Ed25519 key pair:
+    ``` bash
+    ssh-keygen -t ed25519
+    ```
+
+1. Generate a new RSA key pair with a specific name and location:
+    ``` bash
+    ssh-keygen -t rsa -b 4096 -C "my_key" -f /path/to/my_key
+    ```
+
+1. Generate a new key pair and set a passphrase:
+    ``` bash
+    ssh-keygen -t rsa -b 2048 -N "my_passphrase" -f ~/.ssh/my_key
+    ```
+
+1. Generate a new key pair and save it to a different directory:
+    ``` bash
+    ssh-keygen -t rsa -b 2048 -f ~/my_key -P "" -m PEM -q -O force-command="echo 'This account can only be used for SFTP'"
+    ```
 
 ### ufw
+`ufw` stands for Uncomplicated Firewall, which is a user-friendly command-line tool for managing firewall rules in Ubuntu and other Linux distributions. It allows users to easily configure rules to block or allow incoming and outgoing network traffic on their system.
+
+1. Enable the UFW firewall:
+    ``` bash
+    sudo ufw enable
+    ```
+
+1. Allow incoming SSH traffic:
+    ``` bash
+    sudo ufw allow ssh
+    ```
+
+1. Allow incoming traffic on port 80 for HTTP:
+    ``` bash
+    sudo ufw allow 80/tcp
+    ```
+
+1. Allow incoming traffic on port 443 for HTTPS:
+    ``` bash
+    sudo ufw allow 443/tcp
+    ```
+
+1. Deny incoming traffic on a specific port:
+    ``` bash
+    sudo ufw deny 22/tcp
+    ```
+
+1. Allow outgoing traffic to a specific IP address:
+    ``` bash
+    sudo ufw allow out to 203.0.113.0/24
+    ```
+
+1. Delete a specific firewall rule:
+    ``` bash
+    sudo ufw delete allow 80/tcp
+    ```
+
+1. Disable the UFW firewall:
+    ``` bash
+    sudo ufw disable
+    ```
+
 
 ### systemctl
+`systemctl` is a command-line tool for controlling the `systemd` system and service manager, which is used in most modern Linux distributions. It allows the user to manage and control various system services, daemons, and targets, such as starting, stopping, enabling, or disabling them.
+
+1. To start a service: 
+    ``` bash
+    sudo systemctl start service-name
+    ```
+
+1. To stop a service:
+    ``` bash
+    sudo systemctl stop service-name
+    ```
+
+1. To restart a service:
+    ``` bash
+    sudo systemctl restart service-name
+    ```
+
+1. To check the status of a service:
+    ``` bash
+    sudo systemctl status service-name
+    ```
+
+1. To enable a service to start at boot:
+    ``` bash
+    sudo systemctl enable service-name
+    ```
+
+1. To disable a service from starting at boot:
+    ``` bash
+    sudo systemctl disable service-name
+    ```
+
+1. To reload the configuration of a service:
+    ``` bash
+    sudo systemctl reload service-name
+    ```
+
+1. To list all active services:
+    ``` bash
+    sudo systemctl list-units --type=service
+    ```
+
+1. To check if a service is enabled: 
+    ``` bash
+    sudo systemctl is-enabled service-name
+    ```
+
+1. To check if a service is running: 
+    ``` bash
+    sudo systemctl is-active service-name
+    ```
 
 ## Some helpful commands
-
-### sudo
 
 ### !!
 
