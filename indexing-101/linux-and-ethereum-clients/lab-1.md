@@ -161,3 +161,9 @@ This lab exercise assumes you are configuring a [Hetzner AX102 dedicated root se
 
 ### Nethermind
 Coming soon
+
+## Claim your Unit 1 POAP
+### Create a new issue in the Indexing 101 tutorial repository using the Unit 1 POAP Form template
+1. Navigate to the [Unit 1 POAP Form template](https://github.com/IndexerDAO/docs/issues/new?assignees=&labels=&template=unit-1-poap-form.md&title=%5BUnit+1+Submission%5D%3A+)
+2. Update the issue with your logs screenshot and Ethereum address
+3. Click `Submit new issue`
