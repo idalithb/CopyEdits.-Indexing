@@ -9,5 +9,6 @@ assignees: ''
 
 1. Run `sudo journalctl -fu nethermind` in your terminal
 1. Take a screenshot of the logs
-1. Post screenshot to this issue
+1. Paste a screenshot to this issue
 1. Close `journalctl` with `Ctrl+C`
+1. Paste the Ethereum address at which you'd like to receive the Unit 1 POAP
