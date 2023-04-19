@@ -50,7 +50,33 @@ This lab exercise assumes you are configuring a [Hetzner AX102 dedicated root se
 
 
 ### User management
+1.  Add a new user account named `dev` to a Linux system
+    ``` bash
+    adduser dev 
+    ```
+
+1. Adds the `dev` user to the `sudo` group, giving them the ability to execute commands with administrative privileges. Note that after running this command, the user will need to log out and log back in for the changes to take effect. This type of user account is typically used for system services or applications that need to run with a specific set of permissions, but do not require direct access to the system.
+    ``` bash
+    usermod -aG sudo dev
+    ```
+    1. `usermod` - This is the command to modify user account properties.
+    2. `-aG sudo` - The `-a` option appends the specified group to the user's list of groups, while the `-G` option specifies the groups to which the user should be added. In this case, the sudo group is added to the user's list of groups.
+    3. `dev` - This is the username of the user account that will be modified.
+
+1. Add a new user account named `nethermind` to a Linux system
+    ``` bash
+    sudo useradd --no-create-home --shell /bin/false nethermind
+    ```
+    1. `sudo` - This command is used to run the useradd command with elevated privileges. This is necessary because creating a new user account requires administrative privileges.
+    2. `useradd` - This is the command to create a new user account.
+    3. `--no-create-home` - This option specifies that a home directory should not be created for the new user account.
+    4. `--shell /bin/false` - This option sets the login shell for the new user account to `/bin/false`, which means that the user will not be able to log in to the system.
+    5. `nethermind` - This is the username of the new user account that will be created.
+
+
 ### Firewall
+
+
 ### SSH
 
 
