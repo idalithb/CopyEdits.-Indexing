@@ -48,6 +48,12 @@ This lab exercise assumes you are configuring a [Hetzner AX102 dedicated root se
     apt install unzip
     ```
 
+1. Install `ufw` firewall
+    ``` bash
+    apt install ufw 
+    ```
+
+
 
 ### User management
 1.  Add a new user account named `dev` to a Linux system
@@ -74,12 +80,31 @@ This lab exercise assumes you are configuring a [Hetzner AX102 dedicated root se
     5. `nethermind` - This is the username of the new user account that will be created.
 
 
-### Firewall
-
-
 ### SSH
+Coming soon
 
+
+### Firewall
+1. Allow incoming SSH traffic on port 22 through the system's firewall. This is necessary in order to establish SSH connections to the system from remote clients, such as other computers or mobile devices.
+    ``` bash
+    sudo ufw allow 22
+    ```
+    1. `sudo` - This command is used to run the `ufw` command with elevated privileges. This is necessary because modifying firewall rules requires administrative privileges.
+    2. `ufw` - This is the command to manage the system's firewall rules using the `ufw` utility.
+    3. `allow` - This option is used to add a new rule to allow incoming traffic through the firewall.
+    4. `22` - This specifies the port number for the incoming traffic that should be allowed. In this case, port 22 is used, which is the default port for SSH traffic.
+
+1. Allow incoming traffic on port 40403 through the system's firewall. This is useful when running a service or application that requires incoming traffic on that particular port, such as a web server or a database server.
+    ``` bash
+    sudo ufw allow 40403
+    ```
+
+1. Enable the `ufw` (Uncomplicated Firewall) utility on your system, with administrative privileges. All incoming and outgoing traffic is blocked by default, except for ports with an `allow` rule. This is a good security measure, as it prevents unauthorized access to the system.  
+    ``` bash
+    sudo ufw enable
+    ```
 
 ## Configure the blockchain client
 
 ### Nethermind
+Coming soon
