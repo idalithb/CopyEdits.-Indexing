@@ -1330,5 +1330,27 @@ The `rsync` command is used for file synchronization and transfer between multip
     rsync -avz --delete /path/to/source/folder/ /path/to/destination/folder/
     ```
 
+### lsb_release
+The `lsb_release` command is used to obtain information about the Linux distribution release on which the system is running. It prints the LSB (Linux Standard Base) and distribution-specific information. It can be used to determine the distribution name, release number, and codename.
+
+1. To display the distribution-specific information:
+    ``` bash
+    lsb_release -a
+    ```
+
+1. To display only the distribution ID:
+    ``` bash
+    lsb_release -i
+    ```
+
+1. To display only the distribution release number:
+    ``` bash
+    lsb_release -r
+    ```
+
+1. To display only the description of the distribution:
+    ``` bash
+    lsb_release -d
+    ```
 
 
