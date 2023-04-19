@@ -81,8 +81,61 @@ This lab exercise assumes you are configuring a [Hetzner AX102 dedicated root se
 
 
 ### SSH
-Coming soon
+1. Switch to `dev` user
+    ``` bash
+    su dev
+    ```
 
+1. Change the current working directory to the user's home directory. 
+    ``` bash
+    cd ~
+    ```
+
+1. Create a directory called `.ssh`
+    ``` bash
+    mkdir .ssh
+    ```
+
+1. Create a file to store your public `ssh` keys
+    ``` bash
+    touch .ssh/authorized_keys
+    ```
+
+1. Change the file permissions of the `.ssh` directory to `rwx------`, which means that only the owner of the directory can read, write, and execute files within it. This is useful for ensuring that sensitive files within the directory, such as private SSH keys, are only accessible to the owner of the directory.
+    ``` bash
+    chmod 700 .ssh 
+    ```
+    1. `chmod` - This is the command to change the file permissions of a file or directory.
+    2. `700` - This is the numerical representation of the file permissions. In this case, `7` sets the owner's permissions to `rwx` (read, write, execute), while `0` sets the permissions for the group and others to `---` (no permissions).
+    3. `.ssh` - This is the name of the directory whose file permissions are being changed.
+
+1. Change the file permissions of the `authorized_keys` file within the `.ssh` directory to `rw-------`, which means that only the owner of the file can read and write to it. This is an important security measure, as the authorized_keys file is used to authenticate SSH connections, and granting unauthorized access to it could allow an attacker to gain access to the system.
+    ``` bash
+    chmod 600 .ssh/authorized_keys
+    ```
+    1. `chmod` - This is the command to change the file permissions of a file or directory.
+    2. `600` - This is the numerical representation of the file permissions. In this case, `6` sets the owner's permissions to `rw` (read, write), while `0` sets the permissions for the group and others to `---` (no permissions).
+    3. `.ssh/authorized_keys` - This is the name and path of the file whose file permissions are being changed.
+
+1. Change the current working directory to the .ssh directory within the user's home directory
+    ``` bash
+    cd .ssh
+    ```
+
+1. Open the `authorized_keys` file in the Nano text editor for editing and paste in your public `ssh` keys. Once the user has finished editing the file, they can save their changes and exit the editor by pressing `Ctrl+X`, then `Y` to confirm the changes and `Enter` to save the file with the same name.
+
+1. Check that you can login to your server as `dev` user with `ssh` public key authentication. Replace server_ip_address with the actual IP address of the server.
+    ``` bash
+    ssh dev@server_ip_address
+    ```
+    
+1. Disable `root` and password-based logins to your server
+    ``` bash
+    sudo nano /etc/ssh/sshd_config
+    ```
+    1. Set `PermitRootLogin no`: This is a security best practice because the root user has unrestricted access to the entire system, so allowing remote login as root poses a significant security risk. Instead, it's recommended to log in as a non-root user with sudo privileges, and use the sudo command to perform administrative tasks.
+    2. Set `PasswordAuthentication no`: This is a security best practice because it reduces the risk of brute force attacks against SSH login credentials. Public key authentication requires the use of a private key on the client machine and a corresponding public key on the server. This method of authentication is much more secure than using passwords, which can be guessed or cracked through brute force attacks.
+    3. Set `UsePAM no`: The server will not use the PAM framework for authentication, and will instead rely on its own built-in authentication mechanisms. PAM is a modular system that allows for different authentication methods to be used, such as LDAP or Kerberos. However, disabling PAM can provide a more secure environment since it reduces the attack surface of the system.
 
 ### Firewall
 1. Allow incoming SSH traffic on port 22 through the system's firewall. This is necessary in order to establish SSH connections to the system from remote clients, such as other computers or mobile devices.
