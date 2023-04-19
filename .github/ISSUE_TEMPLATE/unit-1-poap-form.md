@@ -1,7 +1,7 @@
 ---
 name: Unit 1 POAP Form
 about: Submit your information to claim a POAP for Unit 1 completion
-title: "[Unit 1 Submission] "
+title: "[Unit 1 Submission]: "
 labels: ''
 assignees: ''
 
@@ -11,4 +11,5 @@ assignees: ''
 1. Take a screenshot of the logs
 1. Paste a screenshot to this issue
 1. Close `journalctl` with `Ctrl+C`
-1. Paste the Ethereum address at which you'd like to receive the Unit 1 POAP
+1. Update the issue title with the Ethereum address at which you'd like to receive the Unit 1 POAP, i.e. [Unit 1 Submission]: 0xYourAddressGoesHere
+1. Submit the issue
