@@ -4,7 +4,7 @@ A **container** is a lightweight, standalone executable package that contains ev
 **Key concepts**
 * **Image**: An image is a read-only template that defines the application and its dependencies.
 * **Container**: A container is a runtime instance of an image. It is isolated from other containers and the host system, and has its own file system, network interfaces, and resources.
-* **Registry**: A registry is a repository for storing and distributing container images. The most popular registry is Docker Hub, but you can also use private registries for storing images.
+* **Registry**: A registry is a repository for storing and distributing container images. The most popular registry is [Docker Hub](https://hub.docker.com/), but you can also use private registries for storing images.
 
 **Benefits of containers**
 * **Portability**: Containers can run on any platform that supports containerization, from laptops to cloud servers. This makes it easy to move applications between development, testing, and production environments.
@@ -17,6 +17,12 @@ A **container** is a lightweight, standalone executable package that contains ev
 * **Complexity**: Containers add an extra layer of complexity to software development and deployment. You need to manage the container runtime, container images, container networking, and container orchestration, which can be challenging if you're not familiar with these technologies.
 * **Debugging difficulties**: Debugging applications in containers can be more difficult than debugging applications on the host system. You need to understand how the container runtime and container networking work to troubleshoot issues effectively.
 * **Dependency management**: While containers help manage dependencies by bundling everything an application needs to run, they can also introduce dependency management issues. If two containers require different versions of the same library, for example, you'll need to find a way to resolve the conflict.
+
+While [Docker](https://www.docker.com/) is the most popular container technology, there are other containerization technologies, such as [LXC/LXD](https://linuxcontainers.org/lxd/introduction/), [CRI-O](https://cri-o.io/), and [containerd](https://containerd.io/). Each technology has its own strengths and weaknesses, but the basic concept of containerization remains the same: encapsulating applications and their dependencies into a self-contained unit that can run consistently across different environments. 
+
+Containers can be managed using container orchestration platforms like [Kubernetes](https://kubernetes.io/) or [Docker Swarm](https://docs.docker.com/get-started/swarm-deploy/). These platforms provide a way to deploy, scale, and manage containers across multiple hosts, making it easier to build and run complex applications.
+
+
 
 
 ## Running single container applications with `docker`
