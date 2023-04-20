@@ -26,6 +26,9 @@ Containers can be managed using container orchestration platforms like [Kubernet
 
 
 ## Running single container applications with `docker`
+Docker provides a simple and efficient way to run single container applications in a consistent and reproducible way. Running a single container application with Docker involves creating a Docker image, which is a packaged, self-contained unit that includes the application code and its dependencies, and then running a container based on that image. Docker images can be built locally or pulled from a registry like Docker Hub, and containers can be run on any platform that supports Docker, from local development environments to production servers. Docker also provides a range of features for managing and monitoring containers, making it easy to deploy and manage single container applications at scale.
+
+
 ### Toy example
 Let's demonstrate to generic workflow for running an app with `docker`
 1. **Create a Dockerfile**: A Dockerfile is a text file that contains instructions for building a Docker image. You'll need to create a Dockerfile for your application.
@@ -130,12 +133,17 @@ Let's build a single container Rust application that gets the current weather in
     docker run -e API_KEY=YOUR
     ```
 
-
-
-
-
-
 ## Running multi-container applications
+Running multi-container applications with [Docker Compose](https://docs.docker.com/compose/), [Kubernetes](https://kubernetes.io/), and [Helm](https://helm.sh/) are three popular approaches for managing complex containerized applications. Docker Compose is best suited for small to medium-sized applications that run on a single host, providing a simple way to define and manage the entire stack of containers. Kubernetes is a container orchestration platform that is designed for large-scale production deployments, with support for scaling, load balancing, and self-healing capabilities. Kubernetes is more complex to set up and manage than Docker Compose, but it provides greater flexibility and resilience for large applications that need to scale. Helm is a package manager for Kubernetes that simplifies the deployment of complex applications by providing a templating system for defining Kubernetes resources, making it easier to deploy and manage applications. Helm charts can be used to define application dependencies and can be versioned and shared with others, making it easier to collaborate on complex deployments. Overall, the choice of whether to use Docker Compose, Kubernetes, or Helm depends on the complexity and scale of the application, as well as the specific requirements of the development team.
+
 ### `docker-compose`
+Docker Compose is a tool for defining and running multi-container Docker applications. It allows developers to define their application stack in a declarative YAML file, specifying the containers, their dependencies, and configuration options. Docker Compose can then start, stop, and manage these containers as a single unit, making it easy to develop, test, and deploy complex multi-container applications. With Docker Compose, developers can create an isolated development environment with multiple services running in different containers, each with its own environment variables, networking, and volumes. Docker Compose also supports scaling containers, managing data volumes, and defining custom network configurations. Overall, Docker Compose simplifies the process of managing multi-container applications, making it easier to build, test, and deploy complex applications with Docker.
+
+#### Toy example
+Coming soon
+
 ### Kubernetes
+Coming soon
+
 ### Helm
+Coming soon
