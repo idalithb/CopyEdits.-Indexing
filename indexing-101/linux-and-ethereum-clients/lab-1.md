@@ -160,7 +160,70 @@ This lab exercise assumes you are configuring a [Hetzner AX102 dedicated root se
 ## Configure the blockchain client
 
 ### Nethermind
-Coming soon
+In this section, we will learn how to run Nethermind, a client implementation of the Ethereum blockchain. We will:
+- Download the latest version of Nethermind from the official website
+- Configure the client by editing the nethermind.cfg file to set the appropriate network ID and parameters for syncing the blockchain
+- Run the Nethermind client using the appropriate command for your operating system (e.g., `nethermind.Run` for Windows or `./nethermind` for Linux/Mac)
+- Monitor the client's progress using the logs and various tools available in the Nethermind interface
+- Once fully synced, you can interact with the Ethereum network using the Nethermind client and start using various Ethereum-based applications and services.
+
+1. #### Installing Nethermind
+    `sudo add-apt-repository ppa:nethermindeth/nethermind`
+    - Adds the Nethermind PPA to the system's software sources.
+    - Allows you to install and receive updates for Nethermind using the apt package manager.
+
+    `sudo apt install nethermind`
+    - Installs the Nethermind package from the system's package repositories.
+    - Downloads and installs the necessary files and dependencies for Nethermind to run.
+    - Enables you to run Nethermind using the nethermind command in the terminal.
+
+    `docker pull nethermind/nethermind`
+    - docker pull is a command used to download a Docker image from a container registry.
+    - nethermind/nethermind is the name of the image being downloaded from Docker Hub.
+    - This command downloads the latest version of the Nethermind image from Docker Hub.
+    - Once the image is downloaded, it can be used to run Nethermind in a Docker container.
+   
+2. #### Configure JSON-RPC API
+    JWT Secrets - 
+    JSON Web Token authentication was added to the JSON-RPC API for security reasons to ensure that nothing interferes with the communication between the       Execution Client (Nethermind in this case) and the Consensus Client. This requires you to create a file containing a hexadecimal “secret” that will be     passed to each.
+    
+    To create this “Secret File” use the following command:
+    `openssl rand -hex 32 | tr -d "\n" > "/tmp/jwtsecret"`
+    where "/tmp/jwtsecret" will be the file path and name when created.
+    
+    Engine module needs to be explicitly switched on in the Netherming config file:
+    ```
+    "JsonRpc": {
+        "Enabled": true,
+        "Timeout": 20000,
+        "Host": "127.0.0.1",
+        "Port": 8545,
+        "EnabledModules": ["Eth", "Subscribe", "Trace", "TxPool", "Web3", "Personal", "Proof", "Net", "Parity", "Health"],
+        "EnginePort": 8551,
+        "EngineHost": "127.0.0.1",
+        "JwtSecretFile": "keystore/jwt-secret"
+    },
+    ```
+
+3. #### Run Nethermind
+    Ensure you have:
+    - Installed Nethermind
+    - Created a JWT secret file
+    - Engine module is enabled with authenticated port
+    
+    ##### Running Nethermind from docker:
+    `docker run -it -v /home/user/data:/nethermind/data nethermind/nethermind --config ropsten --JsonRpc.Enabled true --JsonRpc.JwtSecretFile=PATH --datadir data --JsonRpc.EngineHost=0.0.0.0 --JsonRpc.EnginePort=8551`
+    - `--config` flag **** is the network.
+    - `v /home/user/data:/nethermind/data` sets local directory we will be storing our data to
+    - `--JsonRpc.JwtSecretFile=PATH` where PATH is the location of your JWT secret ex. /tmp/jwtsecret
+    - `--datadir` data maps the database, keystore, and logs all at once
+    
+5. #### Run Consensus Clients
+    Once Nethermind has started you can start the CL client. See the next section for commands to install and run the CL client you installed.
+    
+   
+
+To learn more about running nethermind, refer to the official docs [here](https://docs.nethermind.io/nethermind/first-steps-with-nethermind/running-nethermind-post-merge)
 
 ## Claim your Unit 1 POAP
 ### Create a new issue in the Indexing 101 tutorial repository using the Unit 1 POAP Form template
