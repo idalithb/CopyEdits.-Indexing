@@ -1,6 +1,6 @@
 # Table of contents
 
-* [About IndexerDAO](README.md)
+* [Indexing 101 Overview](README.md)
 
 ## ⌨ Indexing 101
 
