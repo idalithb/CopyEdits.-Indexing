@@ -1,6 +1,12 @@
 # Introduction to Linux
 
-## Objectives
+Linux is a free and open-source operating system widely used in modern computing systems, including servers, supercomputers, mobile devices, and embedded devices. Compared to proprietary alternatives, Linux provides a more customizable and flexible computing environment, allowing users to modify and optimize the system to suit their specific needs. It also offers robust security features, making it a popular choice for web servers and other critical infrastructure. 
+
+Linux is also widely used in web3 applications due to its ability to support decentralized and distributed computing systems. With its modular and scalable design, Linux allows developers to build decentralized applications that can run on a variety of devices and architectures, making it a key component in the web3 technology stack.
+
+This lesson will cover fundamental skills and commands for working with Linux, including creating and manipulating files and directories, managing permissions and security, and using key commands to navigate and manage the system.
+
+## Lesson objectives
 * Create and manipulate folders and files
 * Create and manage permissions, security, and services
 * Some helpful commands
