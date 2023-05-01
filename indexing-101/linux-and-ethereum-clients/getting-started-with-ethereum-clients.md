@@ -1,6 +1,8 @@
 # Getting started with Ethereum Clients
 
-## Execution and Consesus Layer Node Clients
+Ethereum is a decentralized platform that allows developers to build and deploy smart contracts and decentralized applications (DApps) on top of its blockchain network. In order to interact with the Ethereum network, you need an Ethereum client. Ethereum clients come in two main types: execution layer clients and consensus layer clients. Execution layer clients are used to deploy and interact with smart contracts, while consensus layer clients participate in the consensus process of validating transactions and maintaining the blockchain network. In this lesson, we will cover the different types of Ethereum clients, how to set them up on your Linux system, and how to interact with the Ethereum network.
+
+## Execution and Consensus Layer Node Clients
 
 #### What is the Ethereum Consensus Layer?
 
