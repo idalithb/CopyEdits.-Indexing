@@ -1,4 +1,7 @@
 # Lab 1: Sync a Gnosis blockchain node
+
+In this lab, you will apply your knowledge of Linux and Ethereum clients to set up a local development environment for Ethereum. You will learn how to install and configure the Nethermind client, connect to the Gnosis network, and interact with the Gnosis blockchain. By the end of this lab, you will have a functional Gnosis node running on your machine and will be ready to start exploring The Graph ecosystem.
+
 This lab exercise assumes you are configuring a [Hetzner AX102 dedicated root server](https://www.hetzner.com/dedicated-rootserver/ax102) for your Gnosis blockchain node.
 
 ## Configure the server
