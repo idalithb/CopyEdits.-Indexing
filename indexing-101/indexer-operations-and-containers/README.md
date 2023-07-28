@@ -23,4 +23,4 @@ In this unit, we will cover the fundamentals of Indexer Operations and Container
 - ***Lesson 3: Lab 2 - Configure Your Indexing Stack***: Indexing stack and Gnosis RPC node 
     - Learn how to deploy The Graph indexing stack and connect to your Gnosis RPC (Remote Procedure Call) node to ensure a smooth data flow
      
-By the end of this unit students will have a foundation for indexer operations, containers, and the necessary configurations for a successful indexing stack deployment.
+By the end of this unit, students will have a foundation for indexer operations, containers, and the necessary configurations for a successful indexing stack deployment.
