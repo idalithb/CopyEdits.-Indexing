@@ -22,4 +22,4 @@ In this Unit, we will cover fundamental elements of indexing strategy:
 - ***Lesson 3: Index and allocation on a subgraph:***
     - Hands-on practice indexing and allocating on a Gnosis subgraph
 
-By the end of this unit students will be able to swiftly navitage subgraphing and adapt proficient allocation management skills. 
+By the end of this unit, students will be able to swiftly navitage subgraphing and adapt proficient allocation management skills. 
