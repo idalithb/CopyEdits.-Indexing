@@ -1,5 +1,5 @@
 # Indexing Strategies
-At its basic, indexing strategy refers to the process of selecting, organizing, and managing subgraphs on The Graph's decentralized protocol. Within The Graph’s ecosystem, subgraphs, market conditions, and allocation management work together to optimize the work Indexers perform and their potential earnings. 
+At its basic, indexing strategy refers to the process of selecting, organizing, and managing subgraphs on The Graph's decentralized protocol. Within The Graph’s ecosystem, subgraphs, market conditions, and allocation management work together to optimize the work indexers perform and their potential earnings. 
 
 Subgraphs are the primary units of data organization in The Graph; they define how specific blockchain data should be indexed which makes it searchable and accessible to dApps (decentralized applications) and users. They are instrumental in making blockchain data more accessible and usable for developers, which, in turn, drives the growth of The Graph ecosystem. 
 
@@ -7,7 +7,6 @@ As an indexer, your role is to index and serve data from these subgraphs, which 
 
 Moreover, as part of the indexing strategy, indexers need to learn how to allocate resources to index and serve specific subgraphs. This involves indexers strategically distributing their staked GRT tokens (Graph Tokens) to optimize their earnings and performance. Part of this allocation management entails and understanding of subgraph selection, resource allocation, infrastructure scaling, and risk management.
 Overall, it’s crucial for indexers to develop and grow their indexing strategies to move efficiently within The Graph’s ecosystem. 
-In this Unit, we will cover fundamental elements of indexing strategy: 
 
 In this Unit, we will cover fundamental elements of indexing strategy: 
 
