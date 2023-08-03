@@ -18,7 +18,7 @@ Update, upgrade, and clean the system, and then install essential development to
 
 ```bash
 sudo apt update -y && sudo apt upgrade -y && sudo apt auto-remove -y
-sudo apt-get install -y build-essential ufw git
+sudo apt-get install -y build-essential ufw git cmake
 ```
 
 Set explicit default UFW rules
@@ -347,7 +347,92 @@ Use journalctl to display real-time log messages and continuously follow the log
 sudo journalctl -fu lighthouse
 ```
 
+## Nimbus ☁️
 
+Official Docs [https://nimbus.guide/index.html](https://nimbus.guide/index.html)
+
+### Install cmake
+
+```bash
+sudo apt -y install cmake
+```
+
+### Create Nimbus Directory
+
+Create a new directory named nimbus within the "/root/.local/share" directory, providing a location for storing data related to Nimbus.
+
+<pre class="language-bash"><code class="lang-bash"><strong>mkdir /root/.local/share/nimbus
+</strong></code></pre>
+
+### Build Nimbus
+
+Clone the Nimbus repository from GitHub, navigate to the nimbus directory, switch to the latest release, and then build the project with `make`
+
+```bash
+git clone https://github.com/status-im/nimbus-eth2
+cd nimbus-eth2
+make -j4 nimbus_beacon_node
+```
+
+{% hint style="info" %}
+You can increase `-j4` (`-j32`) with higher or lower integer depending on your host machine ram to decrease build time. Omit `-j4` on systems with 4GB of memory or less.
+{% endhint %}
+
+### Configure Nimbus
+
+Append a systemd service configuration for the Nimbus Gnosis Service to the "/etc/systemd/system/nimbus.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
+
+```bash
+sudo echo "[Unit]
+Description=Nimbus Gnosis Service
+After=network.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=5
+TimeoutSec=900
+User=root
+Nice=0
+LimitNOFILE=200000
+WorkingDirectory=/root/nimbus-eth2/
+ExecStart=/root/nimbus-eth2/build/nimbus_beacon_node trustedNodeSync \
+        --data-dir=/root/.local/share/nimbus \
+        --network=gnosis \
+        --rest=true \
+        --rest-port=6061 \
+        --metrics \
+        --metrics-port=6062 \
+        --tcp-port=9001 --udp-port=9001 \
+        --trusted-node-url=https://checkpoint.gnosischain.com/ \
+        --web3-url=http://127.0.0.1:9663 \
+        --jwt-secret=/root/.local/share/erigon/jwt.hex
+
+KillSignal=SIGHUP                                                                                                                                                                                          
+
+[Install]
+WantedBy=multi-user.target" >> /etc/systemd/system/nimbus.service
+```
+
+### Run Nimbus
+
+Reload the systemd manager configuration, restart the Nimbus and Erigon services, and enable the Nimbus service to start automatically on system boot. This ensures that both services are running with the latest configuration and that the Nimbus service will be automatically started upon system startup.
+
+```bash
+systemctl daemon-reload
+systemctl restart nimbus erigon
+sudo systemctl enable nimbus
+```
+
+### Monitor Logs
+
+Use journalctl to display real-time log messages and continuously follow the log output of the Nimbus service, allowing you to monitor its activity and troubleshoot any issues as they occur.
+
+```bash
+sudo journalctl -fu nimbus
+```
 
 ## Teku 🍷
 
@@ -359,9 +444,9 @@ Official Docs [https://docs.teku.consensys.net/get-started](https://docs.teku.co
 sudo apt -y install openjdk-17-jre
 ```
 
-### Create Lighthouse Directory
+### Create Teku Directory
 
-Create a new directory named Teku within the "/root/.local/share" directory, providing a location for storing data related to Teku.
+Create a new directory named teku within the "/root/.local/share" directory, providing a location for storing data related to Teku.
 
 <pre class="language-bash"><code class="lang-bash"><strong>mkdir /root/.local/share/teku
 </strong></code></pre>
@@ -399,7 +484,7 @@ LimitNOFILE=200000
 Environment="JAVA_OPTS=-Xmx5g"
 Environment="TEKU_OPTS=-XX:-HeapDumpOnOutOfMemoryError"
 WorkingDirectory=/root/teku/
-ExecStart=/rootpw/teku/build/install/teku/bin/teku \
+ExecStart=/root/teku/build/install/teku/bin/teku \
         --network=gnosis \
         --data-path=/root/.local/share/teku \
         --rest-api-enabled=true \
