@@ -366,11 +366,12 @@ Create a new directory named nimbus within the "/root/.local/share" directory, p
 
 ### Build Nimbus
 
-Clone the Nimbus repository from GitHub, navigate to the nimbus directory, switch to the latest release, and then build the project with `make`
+Clone the Nimbus repository from GitHub, navigate to the nimbus directory, switch to the latest stable release, and then build the project with `make`
 
 ```bash
 git clone https://github.com/status-im/nimbus-eth2
 cd nimbus-eth2
+git checkout stable
 make -j4 nimbus_beacon_node
 ```
 
