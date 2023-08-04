@@ -28,7 +28,7 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 ```
 
-Allow SSH
+Allow SSH, HTTP and HTTPS
 
 ```bash
 sudo ufw allow 22/tcp
