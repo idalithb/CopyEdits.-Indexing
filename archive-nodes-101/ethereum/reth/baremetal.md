@@ -1,16 +1,16 @@
 ---
-description: 'Authors: [Vince | Nodeify, Payne | Stake🦑Squid]'
+description: 'Authors: [Vince | Nodeify]'
 ---
 
 # 💻 Baremetal
 
 ## System Requirements
 
-<table><thead><tr><th align="center">CPU</th><th width="147" align="center">OS</th><th width="119" align="center">RAM</th><th align="center">Storage</th></tr></thead><tbody><tr><td align="center">6 Cores / 12 Threads</td><td align="center">Ubuntu 22.04</td><td align="center">>= 16GB</td><td align="center">>= 3 TiB NVMe SSD</td></tr></tbody></table>
+<table data-full-width="false"><thead><tr><th align="center">CPU</th><th width="140" align="center">OS</th><th align="center">RAM</th><th align="center">DISK</th></tr></thead><tbody><tr><td align="center">Higher clock speed over core count</td><td align="center">Ubuntu 22.04</td><td align="center">8GB+</td><td align="center">At least 2.1TB (TLC NVMe recommended)</td></tr></tbody></table>
 
-## Erigon 🦦
+## Reth 🦀
 
-Official Docs [https://erigon.gitbook.io/](https://erigon.gitbook.io/)
+Official Docs [https://paradigmxyz.github.io/reth/intro.html](https://paradigmxyz.github.io/reth/intro.html)
 
 ### Pre-requisites
 
@@ -18,7 +18,7 @@ Update, upgrade, and clean the system, and then install essential development to
 
 ```bash
 sudo apt update -y && sudo apt upgrade -y && sudo apt auto-remove -y
-sudo apt-get install -y build-essential ufw git cmake
+sudo apt-get install -y build-essential ufw git libclang-dev pkg-config
 ```
 
 Set explicit default UFW rules
@@ -29,6 +29,14 @@ sudo ufw default allow outgoing
 ```
 
 Allow P2P connections with Erigon, Consensus peers and SSH
+
+```bash
+sudo ufw allow 30303
+sudo ufw allow 9001
+sudo ufw allow 22/tcp
+```
+
+Allow P2P connections with Reth, Consensus peers and SSH
 
 ```bash
 sudo ufw allow 30303
@@ -48,63 +56,57 @@ Not advised to allow all or unknown IP address to RPC port
 
 Enable Firewall
 
-```
+```bash
 sudo ufw enable
 ```
 
-### Install go
+### Install rust
 
-Download the Go programming language distribution archive, extracts it to the "/usr/local" directory, and then removes the downloaded archive, effectively installing Go version 1.20.6 on the system.
+The rustup installer provides an easy way to update the Rust compiler
 
 ```bash
-wget https://go.dev/dl/go1.20.6.linux-amd64.tar.gz && \
-rm -rf /usr/local/go && \
-tar -C /usr/local -xzf go1.20.6.linux-amd64.tar.gz && \
-rm go1.20.6.linux-amd64.tar.gz
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-Please add the Go executable path to your system's `PATH` environment variable, and then test to ensure that Go is working correctly.
+Please add the Cargo path to your system's `PATH` environment variable, and then test to ensure that Cargo is working correctly.
 
 ```bash
-echo "export PATH="$PATH:/root/.foundry/bin:/usr/local/go/bin"" >> /root/.bashrc
+echo "export PATH="$PATH:/root/.local/bin:/root/.cargo/env"" >> /root/.bashrc
 source /root/.bashrc
-go version #test
+cargo --version #test
 ```
 
-### Create Erigon Directory
+### Create reth directory
 
-Create a new directory named erigon within the "/root/.local/share" directory, providing a location for storing data related to Erigon.
+Create a new directory named reth within the "/root/.local/share" directory, providing a location for storing data related to Reth.
 
-```bash
-mkdir /root/.local/share/erigon
+```
+mkdir /root/.local/share/reth
 ```
 
 ### Generate JWT token
 
-Generate a 32-byte random hexadecimal value using OpenSSL, removes any newline characters, and then save the result into the file "jwt.hex" located in the "/root/.local/share/erigon/" directory.
+Generate a 32-byte random hexadecimal value using OpenSSL, removes any newline characters, and then save the result into the file "jwt.hex" located in the "/root/.local/share/reth/" directory.
 
 ```bash
-openssl rand -hex 32 | sudo tee /root/.local/share/erigon/jwt.hex > /dev/null
+openssl rand -hex 32 | sudo tee /root/.local/share/reth/jwt.hex > /dev/null
 ```
 
-### Build Erigon
+### Build Reth
 
-Clone the Erigon repository from GitHub, including its submodules, changes the current directory to the Erigon directory, checks out the latest release tag, and then compile the project using the "make" build system.
+Clone the reth repository from GitHub, navigate to the reth directory, then build the project with `cargo build`.
 
-```bash
-git clone --recurse-submodules https://github.com/ledgerwatch/erigon.git
-cd erigon
-git checkout <latest release tag>
-make
+```
+git clone https://github.com/paradigmxyz/reth
+cd reth
+RUSTFLAGS="-C target-cpu=native" cargo build --profile maxperf
 ```
 
-### Configure Erigon
+### Configure Reth
 
-Append a systemd service configuration for the Erigon Gnosis Mainnet Service to the "/etc/systemd/system/erigon.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
-
-```bash
+```
 sudo echo "[Unit]
-Description=Erigon Gnosis Mainnet Service
+Description=Reth Mainnet Service
 After=network.target
 StartLimitIntervalSec=60
 StartLimitBurst=3
@@ -117,53 +119,48 @@ TimeoutSec=900
 User=root
 Nice=0
 LimitNOFILE=200000
-WorkingDirectory=/root/.local/share/erigon/
-ExecStart=/root/erigon/build/bin/erigon \
-        --datadir=/root/.local/share/erigon/datadir \
-        --ethash.dagdir=/root/.local/share/erigon/datadir/ethash \
-        --chain gnosis \
-        --authrpc.jwtsecret=/root/.local/share/erigon/jwt.hex \
+WorkingDirectory=/root/.local/share/reth/
+ExecStart=/root/reth/target/maxperf/reth \
+        --datadir=/root/.local/share/reth/datadir \
+        --chain mainnet \
+        --authrpc.jwtsecret=/root/.local/share/reth/jwt.hex \
         --authrpc.port=9663 \
         --http \
         --http.addr=0.0.0.0 \
         --http.port=9656 \
-        --http.compression \
-        --http.vhosts=* \
         --http.corsdomain=* \
         --http.api=eth,debug,net,trace,web3,erigon \
-        --private.api.addr=0.0.0.0:9092 \
-        --ws --ws.compression \
-        --metrics --metrics.addr=0.0.0.0 --metrics.port=6060 \
-        --torrent.download.rate 1024mb \
-        --rpc.returndata.limit=1000000
+        --ws \
+        --metrics=6060
+        
 KillSignal=SIGHUP
 
 [Install]
-WantedBy=multi-user.target" >> /etc/systemd/system/erigon.service
+WantedBy=multi-user.target" >> /etc/systemd/system/reth.service
 ```
 
-### Run Erigon
+### Run Reth
 
-Reload the systemd manager configuration, start the Erigon service, and enable it to start automatically on system boot, ensuring that the Erigon Gnosis Mainnet Service is active and will be automatically started upon system startup.
+Reload the systemd manager configuration, start the Reth service, and enable it to start automatically on system boot, ensuring that the Reth Mainnet Service is active and will be automatically started upon system startup.
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl start erigon
-sudo systemctl enable erigon
+sudo systemctl start reth
+sudo systemctl enable reth
 ```
 
 ### Monitor Logs
 
-Use journalctl to display real-time log messages and continuously follow the log output of the Erigon service, allowing you to monitor its activity and troubleshoot any issues as they occur.
+Use journalctl to display real-time log messages and continuously follow the log output of the Reth service, allowing you to monitor its activity and troubleshoot any issues as they occur.
 
 ```bash
-sudo journalctl -fu erigon
+sudo journalctl -fu reth
 ```
 
 ## Consensus Clients&#x20;
 
 {% hint style="danger" %}
-For Erigon to operate, it requires the use of a consensus client. It is crucial to consider client diversity while doing so. -> [https://clientdiversity.org/](https://clientdiversity.org/)
+For Reth to operate, it requires the use of a consensus client. It is crucial to consider client diversity while doing so. -> [https://clientdiversity.org/](https://clientdiversity.org/)
 {% endhint %}
 
 ## Lodestar 🤠
@@ -204,11 +201,11 @@ yarn run build
 
 ### Configure Lodestar
 
-Append a systemd service configuration for the Lodestar Gnosis Service to the "/etc/systemd/system/lodestar.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
+Append a systemd service configuration for the Lodestar Mainnet Service to the "/etc/systemd/system/lodestar.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
 
 ```bash
 sudo echo "[Unit]
-Description=Lodestar Gnosis Service
+Description=Lodestar Mainnet Service
 After=network.target
 StartLimitIntervalSec=60
 StartLimitBurst=3
@@ -223,15 +220,15 @@ LimitNOFILE=200000
 WorkingDirectory=/root/lodestar/
 ExecStart=/root/lodestar/lodestar beacon \
   --datadir=/root/.local/share/lodestar \
-  --network=gnosis \
+  --network=mainnet \
   --rest \
   --rest.port=6061 \
   --metrics \
   --metrics.port=6062 \
   --port 9001 \
-  --checkpointSyncUrl=https://checkpoint.gnosischain.com/ \
+  --checkpointSyncUrl=https://sync-mainnet.beaconcha.in \
   --execution.urls=http://127.0.0.1:9663 \
-  --jwt-secret=/root/.local/share/erigon/jwt.hex
+  --jwt-secret=/root/.local/share/reth/jwt.hex
 
 KillSignal=SIGHUP  
 
@@ -241,11 +238,11 @@ WantedBy=multi-user.target" >> /etc/systemd/system/lodestar.service
 
 ### Run Lodestar
 
-Reload the systemd manager configuration, restart the Lodestar and Erigon services, and enable the Lodestar service to start automatically on system boot. This ensures that both services are running with the latest configuration and that the Lodestar service will be automatically started upon system startup.
+Reload the systemd manager configuration, restart the Lodestar and Reth services, and enable the Lodestar service to start automatically on system boot. This ensures that both services are running with the latest configuration and that the Lodestar service will be automatically started upon system startup.
 
 ```bash
 systemctl daemon-reload
-systemctl restart lodestar erigon
+systemctl restart lodestar reth
 sudo systemctl enable lodestar
 ```
 
@@ -261,45 +258,31 @@ sudo journalctl -fu lodestar
 
 Official Docs [https://lighthouse-book.sigmaprime.io/](https://lighthouse-book.sigmaprime.io/)
 
-### Install rust&#x20;
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-Please add the Rust executable path to your system's `PATH` environment variable, and then test to ensure that Rust is working correctly.
-
-```bash
-echo "export PATH="$PATH:/root/.local/bin:/root/.cargo/env"" >> /root/.bashrc
-source /root/.bashrc
-cargo --version #test
-```
-
 ### Create Lighthouse Directory
 
-Create a new directory named "lighthouse" within the "/root/.local/share" directory, providing a location for storing data related to Lighthouse.
+Create a new directory named lighthouse within the "/root/.local/share" directory, providing a location for storing data related to Lighthouse.
 
 <pre class="language-bash"><code class="lang-bash"><strong>mkdir /root/.local/share/lighthouse
 </strong></code></pre>
 
 ### Build Lighthouse
 
-Clone the lighthouse repository from GitHub, navigate to the lighthouse directory, switch to the stable branch, and then build the project with the gnosis feature enabled using the "make" build system.
+Clone the lighthouse repository from GitHub, navigate to the lighthouse directory, switch to the stable branch, and then build the project with make.
 
 ```bash
 git clone https://github.com/sigp/lighthouse.git
 cd lighthouse
 git checkout stable
-FEATURES=gnosis make
+make
 ```
 
 ### Configure Lighthouse
 
-Append a systemd service configuration for the Lighthouse Gnosis  Service to the "/etc/systemd/system/lighthouse.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
+Append a systemd service configuration for the Lighthouse Mainnet Service to the "/etc/systemd/system/lighthouse.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
 
 ```bash
 sudo echo "[Unit]
-Description=LightHouse Gnosis Service
+Description=LightHouse Mainnet Service
 After=network.target
 StartLimitIntervalSec=60
 StartLimitBurst=3
@@ -315,15 +298,15 @@ LimitNOFILE=200000
 WorkingDirectory=/root/lighthouse/
 ExecStart=/root/lighthouse/target/release/lighthouse bn \
         --datadir=/root/.local/share/lighthouse \
-        --network=gnosis \
+        --network=mainnet \
         --http \
         --http-port=6061 \
         --metrics \
         --metrics-port=6062 \
         --port=9001 \
-        --checkpoint-sync-url=https://checkpoint.gnosischain.com/ \
+        --checkpoint-sync-url=https://sync-mainnet.beaconcha.in \
         --execution-endpoint=http://127.0.0.1:9663 \
-        --execution-jwt=/root/.local/share/erigon/jwt.hex
+        --execution-jwt=/root/.local/share/reth/jwt.hex
 
 KillSignal=SIGHUP                                                                                                                                                                                          
 
@@ -333,11 +316,11 @@ WantedBy=multi-user.target" >> /etc/systemd/system/lighthouse.service
 
 ### Run Lighthouse
 
-Reload the systemd manager configuration, restart the Lighthouse and Erigon services, and enable the Lighthouse service to start automatically on system boot. This ensures that both services are running with the latest configuration and that the Lighthouse service will be automatically started upon system startup.
+Reload the systemd manager configuration, restart the Lighthouse and Reth services, and enable the Lighthouse service to start automatically on system boot. This ensures that both services are running with the latest configuration and that the Lighthouse service will be automatically started upon system startup.
 
 ```bash
 systemctl daemon-reload
-systemctl restart lighthouse erigon
+systemctl restart lighthouse reth
 sudo systemctl enable lighthouse
 ```
 
@@ -383,11 +366,11 @@ You can increase `-j4` (`-j32`) with higher or lower integer depending on your h
 
 ### Configure Nimbus
 
-Append a systemd service configuration for the Nimbus Gnosis Service to the "/etc/systemd/system/nimbus.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
+Append a systemd service configuration for the Nimbus Mainnet Service to the "/etc/systemd/system/nimbus.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
 
 ```bash
 sudo echo "[Unit]
-Description=Nimbus Gnosis Service
+Description=Nimbus Mainnet Service
 After=network.target
 StartLimitIntervalSec=60
 StartLimitBurst=3
@@ -403,15 +386,15 @@ LimitNOFILE=200000
 WorkingDirectory=/root/nimbus-eth2/
 ExecStart=/root/nimbus-eth2/build/nimbus_beacon_node trustedNodeSync \
         --data-dir=/root/.local/share/nimbus \
-        --network=gnosis \
+        --network=mainnet \
         --rest=true \
         --rest-port=6061 \
         --metrics \
         --metrics-port=6062 \
         --tcp-port=9001 --udp-port=9001 \
-        --trusted-node-url=https://checkpoint.gnosischain.com/ \
+        --trusted-node-url=https://sync-mainnet.beaconcha.in \
         --web3-url=http://127.0.0.1:9663 \
-        --jwt-secret=/root/.local/share/erigon/jwt.hex
+        --jwt-secret=/root/.local/share/reth/jwt.hex
 
 KillSignal=SIGHUP                                                                                                                                                                                          
 
@@ -421,7 +404,7 @@ WantedBy=multi-user.target" >> /etc/systemd/system/nimbus.service
 
 ### Run Nimbus
 
-Reload the systemd manager configuration, restart the Nimbus and Erigon services, and enable the Nimbus service to start automatically on system boot. This ensures that both services are running with the latest configuration and that the Nimbus service will be automatically started upon system startup.
+Reload the systemd manager configuration, restart the Nimbus and Reth services, and enable the Nimbus service to start automatically on system boot. This ensures that both services are running with the latest configuration and that the Nimbus service will be automatically started upon system startup.
 
 ```bash
 systemctl daemon-reload
@@ -467,11 +450,11 @@ git checkout <latest release tag>
 
 ### Configure Teku
 
-Append a systemd service configuration for the Teku Gnosis Service to the "/etc/systemd/system/teku.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
+Append a systemd service configuration for the Teku Mainnet Service to the "/etc/systemd/system/teku.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
 
 ```bash
 sudo echo "[Unit]
-Description=Teku Gnosis Service
+Description=Teku Mainnet Service
 After=network.target
 StartLimitIntervalSec=60
 StartLimitBurst=3
@@ -488,16 +471,16 @@ Environment="JAVA_OPTS=-Xmx5g"
 Environment="TEKU_OPTS=-XX:-HeapDumpOnOutOfMemoryError"
 WorkingDirectory=/root/teku/
 ExecStart=/root/teku/build/install/teku/bin/teku \
-        --network=gnosis \
+        --network=mainnet \
         --data-path=/root/.local/share/teku \
         --rest-api-enabled=true \
         --rest-api-port=6061 \
         --metrics-enabled=true \
         --metrics-port=6062 \
         --p2p-port=9001 \
-        --initial-state=https://checkpoint.gnosischain.com \
+        --initial-state=https://sync-mainnet.beaconcha.in \
         --ee-endpoint=http://127.0.0.1:9663 \
-        --ee-jwt-secret-file=/root/.local/share/erigon/jwt.hex
+        --ee-jwt-secret-file=/root/.local/share/reth/jwt.hex
 
 KillSignal=SIGHUP                                                                                                                                                                                          
 
@@ -507,11 +490,11 @@ WantedBy=multi-user.target" >> /etc/systemd/system/teku.service
 
 ### Run Teku
 
-Reload the systemd manager configuration, restart the Teku and Erigon services, and enable the Teku service to start automatically on system boot. This ensures that both services are running with the latest configuration and that the Teku service will be automatically started upon system startup.
+Reload the systemd manager configuration, restart the Teku and Reth services, and enable the Teku service to start automatically on system boot. This ensures that both services are running with the latest configuration and that the Teku service will be automatically started upon system startup.
 
 ```bash
 systemctl daemon-reload
-systemctl restart teku erigon
+systemctl restart teku reth
 sudo systemctl enable teku
 ```
 
@@ -523,10 +506,10 @@ Use journalctl to display real-time log messages and continuously follow the log
 sudo journalctl -fu teku
 ```
 
-## Test Erigon RPC 🧪
+## Test Reth RPC 🧪
 
 {% hint style="danger" %}
-Erigon and Consensus client must be synced before testing.
+Reth and Consensus client must be synced before testing.
 {% endhint %}
 
 {% code overflow="wrap" %}
@@ -541,7 +524,6 @@ This should be your result.
 
 {% code overflow="wrap" %}
 ```bash
-{"jsonrpc":"2.0","result":{"author":"0xcace5b3c29211740e595850e80478416ee77ca21","difficulty":"0xffffffffffffffffffffffffeda7455a","extraData":"0xde830201018f5061726974792d457468657265756d86312e32392e30826c69","gasLimit":"0x989680","gasUsed":"0x0","hash":"0x96059ccf6d5b78b7f30795cd9661f77a117b94ae458020e9010d5a9968376be4","logsBloom":"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","miner":"0xcace5b3c29211740e595850e80478416ee77ca21","number":"0x1","parentHash":"0x4f1dd23188aab3a76b463e4af801b52b1248ef073c648cbdc4c9333d3da79756","receiptsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","sha3Uncles":"0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347","signature":"0xc35e9f8ac05c69d8c36af2cb8b7bb3beda5945e8367fec758c459d32f9ddc183206bad888ebd7addaa6e3f00593100a628c5e86ca80ebe48d4fc831dd36f825d01","size":"0x249","stateRoot":"0x40cf4430ecaa733787d1a65154a3b9efb560c95d9e324a23b97f0609b539133b","step":307804837,"totalDifficulty":"0xffffffffffffffffffffffffeda9455a","timestamp":"0x5bbba539","transactions":[],"transactionsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","uncles":[]},"id":1}
+{"jsonrpc":"2.0","id":1,"result":{"difficulty":"0x3ff800000","extraData":"0x476574682f76312e302e302f6c696e75782f676f312e342e32","gasLimit":"0x1388","gasUsed":"0x0","hash":"0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6","logsBloom":"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","miner":"0x05a56e2d52c817161883f50c441c3228cfe54d9f","mixHash":"0x969b900de27b6ac6a67742365dd65f55a0526c41fd18e1b16f1a1215c2e66f59","nonce":"0x539bd4979fef1ec4","number":"0x1","parentHash":"0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3","receiptsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","sha3Uncles":"0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347","size":"0x219","stateRoot":"0xd67e4d450343046425ae4271474353857ab860dbc0a1dde64b41b5cd3a532bf3","timestamp":"0x55ba4224","totalDifficulty":"0x7ff800000","transactions":[],"transactionsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","uncles":[]}}
 ```
 {% endcode %}
-
