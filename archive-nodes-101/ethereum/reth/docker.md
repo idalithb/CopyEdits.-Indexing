@@ -137,7 +137,7 @@ services:
 ###################################################################################### 
 
   reth:
-    image: ghcr.io/paradigmxyz/reth
+    image: ghcr.io/paradigmxyz/reth:v0.1.0-alpha.4
     container_name: reth
     restart: unless-stopped
     expose:
