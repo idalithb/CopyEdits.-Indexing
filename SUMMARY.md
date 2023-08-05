@@ -11,7 +11,8 @@
 
 ## ⌨ Archive Nodes 101
 
-* [⏫ Arbitrum](archive-nodes-101/arbitrum.md)
+* [⏫ Arbitrum](archive-nodes-101/arbitrum/README.md)
+  * [🐳 Docker](archive-nodes-101/arbitrum/docker.md)
 * [🏔 Avalanche](archive-nodes-101/avalanche.md)
 * [🟨 Celo](archive-nodes-101/celo.md)
 * [🔷 Ethereum](archive-nodes-101/ethereum/README.md)
