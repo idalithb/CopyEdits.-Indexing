@@ -207,6 +207,15 @@ ctrl + x and y to save file
 docker-compose up d
 ```
 
+### Monitor Logs
+
+Use `docker logs` to monitor your reth and lighthouse nodes. The `-f` flag ensures you are following the log output
+
+```
+docker logs reth -f
+docker logs lighthouse -f
+```
+
 ## Test Reth RPC 🧪
 
 {% hint style="danger" %}
