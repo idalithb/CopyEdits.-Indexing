@@ -136,12 +136,11 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.middlewares.arbitrum-stripprefix.stripprefix.prefixes=/arbitrum-archive"
       - "traefik.http.services.arbitrum.loadbalancer.server.port=8547"
       - "traefik.http.routers.arbitrum.entrypoints=websecure"
       - "traefik.http.routers.arbitrum.tls.certresolver=myresolver"
-      - "traefik.http.routers.arbitrum.rule=Host(`$DOMAIN`) && PathPrefix(`/arbitrum-archive`)"
-      - "traefik.http.routers.arbitrum.middlewares=arbitrum-stripprefix, ipwhitelist"
+      - "traefik.http.routers.arbitrum.rule=Host(`$DOMAIN`)"
+      - "traefik.http.routers.arbitrum.middlewares=ipwhitelist"
 
   arbitrum-classic:
     image: 'kw1k/arbnode:latest'
@@ -217,3 +216,20 @@ docker logs nitro -f
 docker logs classic -f
 ```
 
+## Test Arbitrum RPC 🧪
+
+{% code overflow="wrap" %}
+```bash
+curl --data '{"method":"eth_syncing","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST https://{DOMAIN}
+```
+{% endcode %}
+
+{% hint style="warning" %}
+You should receive result.
+{% endhint %}
+
+{% code overflow="wrap" %}
+```
+{"jsonrpc":"2.0","id":1,"result":{"batchProcessed":308668,"batchSeen":308668,"blockNum":96352870,"broadcasterQueuedMessagesPos":0,"lastL1BlockNum":17885784,"lastl1BlockHash":"0x758b86452273e12b74cdfdc1fb11c373e25589676c09b9b42fd917015fcdeccd","messageOfLastBlock":74145055,"messageOfProcessedBatch":97883962,"msgCount":97884349}}
+```
+{% endcode %}
