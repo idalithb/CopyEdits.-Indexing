@@ -182,6 +182,7 @@ services:
       - monitor-net
     command: >
       --chain bor-mainnet
+      --datadir /root/.local/share/erigon
       --bor.heimdall=http://heimdallr:1317
       --torrent.download.rate 1024mb
       --metrics
@@ -200,7 +201,7 @@ services:
       --sentry.drop-useless-peers=true
       --db.size.limit=12TB
     volumes:
-      - /var/lib/erigon:/home/erigon/.local/share/erigon:rw
+      - /var/lib/erigon:/root/.local/share/erigon:rw
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.erigon.loadbalancer.server.port=8545"

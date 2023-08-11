@@ -85,47 +85,43 @@ Paste the following into the docker-compose.yml
 ```docker
 version: '3.8'
 
+x-logging:
+  &default-logging
+  options:
+    max-file: '1'
+    compress: 'false'
+  driver: local
+
+networks:
+  monitor-net:
+    driver: bridge
+
+volumes:
+  arbitrum-nitro:
+  arbitrum-classic:
+
 services:
 
-  traefik:
-    image: traefik:latest
-    container_name: traefik
-    restart: always
-    ports:
-      - "443:443"
-    command:
-      - "--api=true"
-      - "--api.insecure=true"
-      - "--api.dashboard=true"
-      - "--log.level=DEBUG"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=$EMAIL"
-      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-    volumes:
-      - "traefik_letsencrypt:/letsencrypt"
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.middlewares.ipwhitelist.ipwhitelist.sourcerange=$WHITELIST"
+######################################################################################
+#####################         ARBITRUM NITRO CONTAINER          ######################
+###################################################################################### 
 
   arbitrum-nitro:
     image: 'offchainlabs/nitro-node:v2.0.14-2baa834-slim-amd64'
+    container_name: nitro
     restart: always
     stop_grace_period: 30s
     user: root
     volumes:
-    - 'arbitrum-nitro:/arbitrum-node'
+      - 'arbitrum-nitro:/arbitrum-node'
     expose:
       - 8547
       - 8548
     command:
       - --init.url=https://snapshot.arbitrum.foundation/arb1/nitro-archive.tar
       - --node.caching.archive
-      - --persistent.chain=/home/user/.arbitrum/mainnet
-      - --persistent.global-config=/home/user/.arbitrum
+      - --persistent.chain=/arbitrum-node/data/
+      - --persistent.global-config=/arbitrum-node/
       - --node.rpc.classic-redirect=http://arbitrum-classic:8547/
       - --l1.url=${ARBITRUM_L1_URL}
       - --l2.chain-id=42161
@@ -139,21 +135,24 @@ services:
       - "traefik.http.services.arbitrum.loadbalancer.server.port=8547"
       - "traefik.http.routers.arbitrum.entrypoints=websecure"
       - "traefik.http.routers.arbitrum.tls.certresolver=myresolver"
-      - "traefik.http.routers.arbitrum.rule=Host(`$DOMAIN`)"
+      - "traefik.http.routers.arbitrum.rule=Host(`$ARB_HOST`)"
       - "traefik.http.routers.arbitrum.middlewares=ipwhitelist"
+
+######################################################################################
+#####################         ARBITRUM CLASSIC CONTAINER          ####################
+###################################################################################### 
 
   arbitrum-classic:
     image: 'kw1k/arbnode:latest'
+    container_name: classic
     restart: always
     stop_grace_period: 30s
     user: root
     volumes:
-      - 'arbitrum-classic:/root/.arbitrum/mainnet'
-      - './arbitrum-classic-entrypoint.sh:/entrypoint.sh'
+    - 'arbitrum-classic:/root/.arbitrum/mainnet'
     expose:
       - 8547
       - 8548
-    entrypoint: ["/bin/bash", "/entrypoint.sh"]
     command:
       - --l1.url=${ARBITRUM_L1_URL}
       - --l2.disable-upstream
@@ -167,10 +166,42 @@ services:
       - --l2.final-classic-block=22207816
     restart: unless-stopped
 
-volumes:
-  arbitrum-nitro:
-  arbitrum-classic:
-  traefik_letsencrypt:
+######################################################################################
+#####################         TRAEFIK PROXY CONTAINER          #######################
+######################################################################################   
+
+  traefik:
+    image: traefik:latest
+    container_name: traefik
+    restart: always
+    expose:
+      - "8082"
+    ports:
+      - "443:443"
+      - "80:80"
+    command:
+      - "--api=true"
+      - "--api.insecure=true"
+      - "--api.dashboard=true"
+      - "--log.level=DEBUG"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.file.filename=/dynamic_config.yml"
+      - "--entrypoints.websecure.address=:443"
+      - "--entryPoints.metrics.address=:8082"
+      - "--metrics.prometheus.entryPoint=metrics"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=$EMAIL"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    volumes:
+      - "./traefik/letsencrypt:/letsencrypt"
+      - "./traefik/config/dynamic_config.yml:/dynamic_config.yml"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - monitor-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.ipwhitelist.ipwhitelist.sourcerange=$WHITELIST"
 ```
 
 {% hint style="info" %}
