@@ -14,6 +14,8 @@
 * [⏫ Arbitrum](archive-nodes-101/arbitrum/README.md)
   * [🐳 Docker](archive-nodes-101/arbitrum/docker.md)
 * [🏔 Avalanche](archive-nodes-101/avalanche.md)
+* [🔵 Base](archive-nodes-101/base/README.md)
+  * [🐳 Docker](archive-nodes-101/base/docker.md)
 * [🟨 Celo](archive-nodes-101/celo.md)
 * [🔷 Ethereum](archive-nodes-101/ethereum/README.md)
   * [🦦 Erigon](archive-nodes-101/ethereum/erigon/README.md)
