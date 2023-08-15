@@ -179,7 +179,6 @@ services:
     expose:
       - "8545" # RPC
       - "7300" # METRICS
-      - "6060" # PPROF
     ports:
       - "9222:9222"     # P2P TCP
       - "9222:9222/udp" # P2P UDP
