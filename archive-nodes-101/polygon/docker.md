@@ -261,7 +261,7 @@ ctrl + x and y to save file
 ### Run Polygon Node
 
 ```bash
-docker-compose up d
+docker-compose up -d
 ```
 
 ### Monitor Logs

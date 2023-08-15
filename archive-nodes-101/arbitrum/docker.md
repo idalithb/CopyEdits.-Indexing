@@ -235,7 +235,7 @@ echo "LFG!!!"
 ### Run Arbitrum Node
 
 ```bash
-docker-compose up d
+docker-compose up -d
 ```
 
 ### Monitor Logs

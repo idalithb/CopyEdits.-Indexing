@@ -226,7 +226,7 @@ ctrl + x and y to save file
 ### Run Erigon
 
 ```bash
-docker-compose up d
+docker-compose up -d
 ```
 
 ### Monitor Logs

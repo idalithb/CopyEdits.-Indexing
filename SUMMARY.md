@@ -13,7 +13,8 @@
 
 * [⏫ Arbitrum](archive-nodes-101/arbitrum/README.md)
   * [🐳 Docker](archive-nodes-101/arbitrum/docker.md)
-* [🏔 Avalanche](archive-nodes-101/avalanche.md)
+* [🏔 Avalanche](archive-nodes-101/avalanche/README.md)
+  * [🐳 Docker](archive-nodes-101/avalanche/docker.md)
 * [🔵 Base](archive-nodes-101/base/README.md)
   * [🐳 Docker](archive-nodes-101/base/docker.md)
 * [🟨 Celo](archive-nodes-101/celo/README.md)

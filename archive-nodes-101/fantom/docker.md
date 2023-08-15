@@ -180,7 +180,7 @@ ctrl + x and y to save file
 ### Run Fantom Node
 
 ```bash
-docker-compose up d
+docker-compose up -d
 ```
 
 ### Monitor Logs

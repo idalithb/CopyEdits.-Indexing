@@ -204,7 +204,7 @@ ctrl + x and y to save file
 ### Run Reth
 
 ```bash
-docker-compose up d
+docker-compose up -d
 ```
 
 ### Monitor Logs
