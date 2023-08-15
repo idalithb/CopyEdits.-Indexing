@@ -221,7 +221,7 @@ services:
     expose:
       - "8545"       # RPC
       - "8546"       # websocket
-      - "6060"       # metrics
+      - "7300"       # metrics
     ports:
       - "30303:30303" # Peers
       - "30303:30303/udp" # Peers
