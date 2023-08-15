@@ -164,7 +164,6 @@ services:
       - --core.checkpoint-gas-frequency=156250000
       - --node.rpc.addr=0.0.0.0
       - --l2.final-classic-block=22207816
-    restart: unless-stopped
 
 ######################################################################################
 #####################         TRAEFIK PROXY CONTAINER          #######################
