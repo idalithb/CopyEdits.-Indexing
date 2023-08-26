@@ -171,7 +171,7 @@ services:
 ###################################################################################### 
 
   opnode:
-    image: us-docker.pkg.dev/oplabs-tools-artifacts/images/op-node:89ed69d80bbec7f2b1dd69e7e48cb7119839d58a
+    image: us-docker.pkg.dev/oplabs-tools-artifacts/images/op-node:v1.1.3
     container_name: opnode
     networks:
      - monitor-net
@@ -213,7 +213,7 @@ services:
 ######################################################################################
 
   geth:
-    image: us-docker.pkg.dev/oplabs-tools-artifacts/images/op-geth:b5fecf58ec77909c70bd15b96b32b593af0b38ff
+    image: us-docker.pkg.dev/oplabs-tools-artifacts/images/op-geth:v1.101200.1-rc.2
     container_name: geth
     restart: unless-stopped
     networks:
