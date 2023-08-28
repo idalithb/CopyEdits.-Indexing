@@ -8,13 +8,13 @@ Overall, containers play a crucial role because they enable indexers to perform 
 
 In this unit, we will cover the fundamentals of Indexer Operations and Containers:
 
-- ***Lesson 1: Introduction to Indexer Operations***: Wallets, Multisigs, Faucets, Network Registration.
+- ***Lesson 1: Introduction to Indexer Operations***: Wallets, Multisigs, Faucets, Network Registration
     - Differences between hot and cold wallets, and between indexer wallets and operator wallets
     - The efficiency of multisigs wallets
     - How to utilize faucets, which are mechanisms to distribute tokens or cryptocurrencies for testing purposes, and their role in the indexing process
     - The basics of network registration
    
-- ***Lesson 2: Getting Started with Containers***: Docker, docker-compose, Kubernetes, and Helm. 
+- ***Lesson 2: Getting Started with Containers***: Docker, docker-compose, Kubernetes, and Helm
     - The basics to Docker, a popular containerization platform 
     - How to use Docker Compose to compose multiple containers and create more complex indexer setups
     - An understanding of Kubernetes, an open-source container orchestration 
