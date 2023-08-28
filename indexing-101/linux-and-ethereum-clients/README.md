@@ -4,8 +4,11 @@ Linux and Ethereum clients are essential components of the web3 infrastructure. 
 
 In this unit, we will cover the fundamentals of Linux and Ethereum clients:
 
-+  ***Introduction to Linux*** includes basic commands, file system navigation, and permissions
-+  ***Getting Started with Ethereum Clients*** provides an overview of commonly used clients
-+  ***Lab 1: Sync a Gnosis Blockchain Node*** allows students to apply their knowledge and practice syncing a blockchain node to the Gnosis network using Nethermind
++  ***Introduction to Linux*** 
+    - Covers basic commands, file system navigation, and permissions
++  ***Getting Started with Ethereum Clients***
+    - Provides an overview of commonly used clients
++  ***Lab 1: Sync a Gnosis Blockchain Node***
+    - Allows students to apply their knowledge and practice syncing a blockchain node to the Gnosis network using Nethermind
 
 By understanding the principles behind Linux and Ethereum clients, students will be equipped with the necessary skills to contribute to the development and maintenance of web3 infrastructure.
