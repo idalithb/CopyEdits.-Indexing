@@ -1,6 +1,6 @@
 # Indexer Operations and Containers
 
-Containers are a vital component of the work that indexers perform within The Graph protocol. Therefore, it’s crucial to understand their functionality. Containers provide a consistent and reliable environment for running the indexing software that is required by indexers. By packaging the indexing software and its dependencies into a container, indexers can easily deploy and run the software on their local machines or on cloud infrastructure. This not only makes Indexer's jobs more efficient, but it also reduces the barrier for new indexers who want to join the network.
+Containers are a vital component of the work that indexers perform within The Graph protocol. Therefore, it’s crucial to understand their functionality. Containers provide a consistent and reliable environment for running the indexing software that is required by indexers. By packaging the indexing software and its dependencies into a container, indexers can easily deploy and run the software on their local machines or on cloud infrastructure. This not only makes indexer's jobs more efficient, but it also reduces the barrier for new indexers who want to join the network.
 
 Containers facilitate the mechanisms indexers need to compute resources within The Graph. They provide a way to isolate the indexing software from the host operating system, which improves security and stability. Each container runs within its own isolated environment, so issues with the indexing software or its dependencies do not affect other parts of the system. This process reduces the risk of conflicts and makes it easier to manage and update the software. 
 
@@ -9,7 +9,7 @@ Overall, containers play a crucial role because they enable indexers to perform 
 In this unit, we will cover the fundamentals of Indexer Operations and Containers:
 
 - ***Lesson 1: Introduction to Indexer Operations***: Wallets, Multisigs, Faucets, Network Registration
-    - Differences between hot and cold wallets, and between indexer wallets and operator wallets
+    - Differences between hot and cold wallets, indexer wallets, and operator wallets
     - The efficiency of multisigs wallets
     - How to utilize faucets, which are mechanisms to distribute tokens or cryptocurrencies for testing purposes, and their role in the indexing process
     - The basics of network registration
