@@ -4,7 +4,7 @@ Containers are a vital component of the work that indexers perform within The Gr
 
 Containers facilitate the mechanisms indexers need to compute resources within The Graph. They provide a way to isolate the indexing software from the host operating system, which improves security and stability. Each container runs within its own isolated environment, so issues with the indexing software or its dependencies do not affect other parts of the system. This process reduces the risk of conflicts and makes it easier to manage and update the software. 
 
-Overall, containers play a crucial role because they enable indexers to perform efficiently within the The Graph’s protocol, they provide a consistent and reliable environment for running indexing software, and they make it easier for indexers to join the network within a stable and secure system.
+Overall, containers play a crucial role because they enable indexers to perform efficiently within The Graph’s protocol, they provide a consistent and reliable environment for running indexing software, and they make it easier for indexers to join the network within a stable and secure system.
 
 In this unit, we will cover the fundamentals of Indexer Operations and Containers:
 
