@@ -4,18 +4,18 @@ Containers are a vital component of the work that Indexers perform within The Gr
 
 Containers facilitate the mechanisms Indexers need to compute resources within The Graph. They provide a way to isolate the indexing software from the host operating system, which improves security and stability. Each container runs within its own isolated environment, so issues with the indexing software or its dependencies do not affect other parts of the system. This process reduces the risk of conflicts and makes it easier to manage and update the software. 
 
-Overall, containers play a crucial role because they enable indexers to perform efficiently within the The Graph’s protocol, they provide a consistent and reliable environment for running indexing software, and they make it easier for indexers to join the network within a stable and secure system.
+Overall, containers play a crucial role because they enable indexers to perform efficiently within The Graph’s protocol, they provide a consistent and reliable environment for running indexing software, and they make it easier for indexers to join the network within a stable and secure system.
 
 In this unit, we will cover the basics needed to better understand Indexer Operations and Containers:
 
-- ***Lesson 1: Introduction to Indexer Operations***: Wallets, Multisigs, Faucets, Network Registration.
+- ***Lesson 1: Introduction to Indexer Operations***: Wallets, Multisigs, Faucets, Network Registration
   - In this lesson you will explore:
     - The differences between hot and cold wallets, and the difference between indexer wallets and operator wallets
     - The efficiency of multisigs wallets and how they enable secure transactions
     - How to utilize faucets, mechanisms to distribute tokens or cryptocurrencies for testing purposes, and their role in the indexing process
     - The basics of network registration
    
-- ***Lesson 2: Getting Started with Containers***: Docker, docker-compose, Kubernetes, and Helm. 
+- ***Lesson 2: Getting Started with Containers***: Docker, docker-compose, Kubernetes, and Helm 
     - In this lesson you will learn:
       - The basics to Docker, a popular containerization platform
       - How to use Docker Compose to compose multiple containers and create more complex indexer setups
