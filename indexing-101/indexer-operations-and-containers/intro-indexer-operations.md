@@ -18,3 +18,18 @@ _Keep this in mind as we move forward, and we review the differences between hot
 
 ## Hot Wallets ##
 
+Hot wallets are online wallets that are **always** connected to the internet; they can be web-based, mobile, or a desktop app. They have private keys that grant you access to your blockchain address and all your digital assets. 
+
+#### Types of Hot Wallets ####
+  - Web Wallets: Allow you access to your account via web browser. They are provided by various online platforms such as MyEtherWallet, MetaMask, and Trust Wallet
+  - Mobile Wallets: Apps that allow you quick on-the-go access to your account such as Trust Wallet and Coinbase Wallet
+
+**Pros:**
+  - They are highly convenient
+  - Give you quick access 
+
+**Cons:**
+  - They are more vulnerable to cyber-attacks and hacks
+  - They are considered less secure compared to cold wallets  
+
+### Using Hot Wallets ###
