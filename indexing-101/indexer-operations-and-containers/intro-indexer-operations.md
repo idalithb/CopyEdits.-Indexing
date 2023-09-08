@@ -39,3 +39,7 @@ When setting up the wallet, a user generates a cryptographic key pair:
   - **Public Key:** Allows users to receive assets. This is the wallet address where others can send cryptocurrency to you.
   - **Private Key:** Authorizes direct access to assets within a blockchain address; it is used to access and control the funds in the wallet. This is a secret key that you must keep secure and never share with anyone. 
 
+There are two broad categories of hot wallets, based on how you can access your account’s private keys: 
+
+**Custodial wallets**, also known as hosted wallets or third-party wallets, are crypto exchange wallets like Binance and Coinbase. With this type of wallet, the third-party provider holds and manages your cryptocurrency assets on your behalf. They allow you to view your public keys, but the custodian or wallet provider controls the private keys. You access your wallet via login credentials, but it has no direct link to the address on the blockchain where your funds are stored. 
+Essentially, you rely on the custodian to facilitate access. These types of wallets are designed to be user-friendly and more accessible. 
