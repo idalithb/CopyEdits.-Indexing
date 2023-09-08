@@ -36,7 +36,7 @@ Hot wallets are online wallets that are _**always**_ connected to the internet; 
 
 You typically download and install hot wallets on your computer, smartphone, or use online wallet services.
 When setting up the wallet, you generate a cryptographic key pair:
-  - **Public Key:** Allows you to receive assets. This is the wallet address where others can send cryptocurrency to you.
+  - **Public Key:** Allows you to receive assets—this is the wallet address where others can send cryptocurrency to you.
   - **Private Key:** Authorizes direct access to assets within a blockchain address; it is used to access and control the funds in the wallet. This is a secret key that you must keep secure and never share with anyone. 
 
 There are two broad categories of hot wallets, based on how you can access your account’s private keys: 
