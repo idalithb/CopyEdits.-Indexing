@@ -8,19 +8,19 @@ Overall, containers play a crucial role because they enable indexers to perform 
 
 In this unit, we will cover the fundamentals of Indexer Operations and Containers:
 
-- ***Lesson 1: Introduction to Indexer Operations***: Wallets, Multisigs, Faucets, Network Registration
+- ***Lesson 1- Introduction to Indexer Operations***: Wallets, Multisigs, Faucets, Network Registration
     - Differences between hot and cold wallets, indexer wallets, and operator wallets
     - The efficiency of multisigs wallets
     - How to utilize faucets, which are mechanisms to distribute tokens or cryptocurrencies for testing purposes, and their role in the indexing process
     - The basics of network registration
    
-- ***Lesson 2: Getting Started with Containers***: Docker, docker-compose, Kubernetes, and Helm
+- ***Lesson 2- Getting Started with Containers***: Docker, docker-compose, Kubernetes, and Helm
     - The basics to Docker, a popular containerization platform 
     - How to use Docker Compose to compose multiple containers and create more complex indexer setups
     - An understanding of Kubernetes, an open-source container orchestration 
     - How to work with Helm, which is a package manager for Kubernetes that simplifies the deployment and management of applications
 
-- ***Lesson 3: Lab 2 - Configure Your Indexing Stack***: Indexing stack and Gnosis RPC node 
+- ***Lesson 3- Lab 2 - Configure Your Indexing Stack***: Indexing stack and Gnosis RPC node 
     - Learn how to deploy The Graph indexing stack and connect to your Gnosis RPC (Remote Procedure Call) node to ensure a smooth data flow
      
 By the end of this unit, students will have a foundation for indexer operations, containers, and the necessary configurations for a successful indexing stack deployment.
