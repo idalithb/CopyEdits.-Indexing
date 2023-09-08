@@ -18,7 +18,7 @@ In this Unit, we will cover fundamental elements of indexing strategy:
     - Subgraph selection, resource allocation, infrastructure scaling
     - Accessing risk and optimizing earnings
 
-- ***Lesson 3: Index and allocation on a subgraph:***
+- ***Lesson 3 - Index and allocation on a subgraph:***
     - Hands-on practice indexing and allocating on a Gnosis subgraph
 
 By the end of this unit, students will be able to swiftly navigate subgraphing and adapt proficient allocation management skills. 
