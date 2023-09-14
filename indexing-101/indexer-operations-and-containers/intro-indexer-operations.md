@@ -51,3 +51,22 @@ Essentially, you rely on the custodian to facilitate access. These types of wall
 **Non-custodial wallets**, also known as self-hosted wallets, give you absolute control of your assets by leaving you in charge of the private key for this blockchain address. This means that you have direct access to your blockchain address, independently of the wallet. 
 You get a seed phrase, a 12-word recovery phrase, when you set up the wallet. This seed phrase encodes your private keys and helps you regain access to the wallet if you lose your device. An example of a non-custodial hot wallet is Metamask. 
 
+## Cold Wallets ##
+
+---
+
+Cold wallets, also known as cold storage solutions, are cryptocurrency wallets that are not connected to the internet. They protect your crypto by generating and storing private keys offline. It’s important to note that these keys are not the same as the seed phrase you generate every time you create a wallet (i.e., see hot wallets), but they are needed to sign a transaction and whoever holds them has authority to move that crypto to another address. 
+
+### Types of Cold Wallets: ###
+  - Hardware Wallets: Physical devices, like USB drives, that store your cryptocurrency keys offline. which means they are immune to online attacks.
+  - Paper Wallets: A physical document that contains a public address for receiving cryptocurrency and a private key for spending or transferring the cryptocurrency. Since it's a physical item, it's immune to online threats. However, it must be stored securely to prevent physical theft or damage.
+  - Metal Wallets: Are made of durable materials like metal but are like paper wallets and store cryptocurrency private keys. They are resistant to physical damage from fire or water.
+  - Offline Software Wallets: These are installed on a computer that has never been connected to the internet. This isolation ensures that the wallet and its private keys are never exposed to online threats.
+
+**Pros:**
+  - Eliminate the risk of theft or hacking
+  - Considered long-term storage of cryptocurrencies
+  - Offer better security
+    
+**Cons:**
+  - Cannot be accessed from anywhere since they’re offline 
