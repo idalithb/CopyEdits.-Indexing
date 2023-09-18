@@ -3,7 +3,7 @@ It is crucial to understand that **wallets** are essential and necessary tools t
 
 Ethereum wallets within the Web3 ecosystem are applications that allow you access to your account. They function like physical wallets where your identification and assets are held. Wallets allow you to sign into apps, view balances, send transactions, and verify your I.D. 
 
-It’s helpful to think of wallets as windows to view and manage your assets on Ethereum, and _**not**_ as an Ethereum account. So, a wallet allows you to use the keys associated with your Ethereum account to interact with it. 
+> It’s helpful to think of wallets as windows to view and manage your assets on Ethereum, and _**not**_ as an Ethereum account. So, a wallet allows you to use the keys associated with your Ethereum account to interact with it. 
 
 However, most wallet products will let you generate an Ethereum account, so you don't need one before you download a wallet. 
 
@@ -36,7 +36,6 @@ Hot wallets are online wallets that are _**always**_ connected to the internet; 
 
 ### Function & Security ###
 
----
 
 You typically download and install hot wallets on your computer, smartphone, or use online wallet services.
 When setting up the wallet, you generate a cryptographic key pair:
@@ -69,4 +68,24 @@ Cold wallets, also known as cold storage solutions, are cryptocurrency wallets t
   - Offer better security
     
 **Cons:**
-  - Cannot be accessed from anywhere since they’re offline 
+  - Cannot be accessed from anywhere since they’re offline
+
+### Function: Regular Cold & Ultra-Cold Storage ###
+
+There are two approaches to broadcasting signed transactions to the network when completing the transaction signing process: regular cold storage and ultra-cold storage.
+
+**Regular Cold Storage** 
+
+_What do you do?_
+
+You connect the offline cold storage wallet to another device with an internet connection using a USB cable. This enables you to plug the hardware wallet into MetaMask to sign transactions, which allows you access to smart contracts. You can provide liquidity, vote on governance proposals, and even take out loans. Every transaction requires you to enter a pin on the device manually. 
+
+_What are the potential risks?_
+
+Although it is more secure than hot wallets, any USB connection can expose your device to malware.
+
+_What are the benefits?_
+
+Each initiated transaction is temporarily transferred to the secure offline space on the wallet, which stores the private key. The transaction is signed and returned to the online environment before being broadcast on the blockchain network. This process takes place in a matter of seconds, so it hides the complexities from you.
+
+
