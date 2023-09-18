@@ -86,6 +86,6 @@ Although it is more secure than hot wallets, any USB connection can expose your 
 
 _What are the benefits?_
 
-Each initiated transaction is temporarily transferred to the secure offline space on the wallet, which stores the private key. The transaction is signed and returned to the online environment before being broadcast on the blockchain network. This process takes place in a matter of seconds, so it hides the complexities from you.
+Each initiated transaction is temporarily transferred to the secure offline space on the wallet, which stores the private key. The transaction is signed and returned to the online environment before being broadcast on the blockchain network. This process takes place in a matter of seconds. 
 
 
