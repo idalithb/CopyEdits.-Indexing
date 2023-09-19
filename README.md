@@ -8,7 +8,7 @@ The tutorial's community-driven approach ensures that the content is regularly u
 
 ## About IndexerDAO
 
-IndexerDAO is a decentralized autonomous organization (DAO) dedicated to supporting the Indexer community within the Graph ecosystem.
+IndexerDAO is a decentralized autonomous organization (DAO) dedicated to supporting the indexer community within the Graph ecosystem.
 
 Our mission is to empower new and aspiring indexers with ongoing education and project-based learning opportunities, as well as to drive innovation in the indexing space through the testing of R&D efforts from core developers.
 
