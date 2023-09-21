@@ -88,4 +88,19 @@ _What are the benefits?_
 
 Each initiated transaction is temporarily transferred to the secure offline space on the wallet, which stores the private key. The transaction is signed and returned to the online environment before being broadcast on the blockchain network. This process takes place in a matter of seconds. 
 
+**Ultra-cold Storage** 
 
+_What do you do? _
+
+You have to manually broadcast a signed transaction to the network. Some wallets, like Ellipal, use digital screens to make this process more user-friendly. 
+With this type of wallet, when you want to send a transaction, you enter the receiver’s address on the device and sign the transaction. The device then transforms that signed transaction into a QR code that can be scanned with an internet-connected device. Once you have the signed transaction, you can then broadcast it to the network.
+
+_What are the potential issues?_
+
+Because this type of wallet is completely isolated from any device capable of internet connectivity, they are not as convenient as hot wallets, and they require several steps to complete transactions. Additionally, the assets stored within this type of wallet remain untouched for a relatively long time. 
+
+_What are the benefits?_
+They function as a type of vault that cannot be easily accessed which strengthens its security. 
+
+>Reports confirm that over 80% of bitcoin’s supply is held in cold storage, which makes it a popular choice among bitcoin investors. 
+Additionally, cryptocurrency-related businesses such as exchanges and custodians also adopt various forms of institutional-grade cold storage solutions.
