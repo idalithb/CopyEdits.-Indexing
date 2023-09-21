@@ -78,7 +78,8 @@ There are two approaches to broadcasting signed transactions to the network when
 
 _What do you do?_
 
-You connect the offline cold storage wallet to another device with an internet connection using a USB cable. This enables you to plug the hardware wallet into MetaMask to sign transactions, which allows you access to smart contracts. You can provide liquidity, vote on governance proposals, and even take out loans. Every transaction requires you to enter a pin on the device manually. 
+- You connect the offline cold storage wallet to another device with an internet connection using a USB cable. 
+  - This enables you to plug the hardware wallet into MetaMask to sign transactions, which allows you access to smart contracts. You can provide liquidity, vote on governance proposals, and even take out loans. Every transaction requires you to enter a pin on the device manually. 
 
 _What are the potential risks?_
 
@@ -90,16 +91,17 @@ Each initiated transaction is temporarily transferred to the secure offline spac
 
 **Ultra-cold Storage** 
 
-_What do you do? _
+_What do you do?_
 
-You have to manually broadcast a signed transaction to the network. Some wallets, like Ellipal, use digital screens to make this process more user-friendly. 
-With this type of wallet, when you want to send a transaction, you enter the receiver’s address on the device and sign the transaction. The device then transforms that signed transaction into a QR code that can be scanned with an internet-connected device. Once you have the signed transaction, you can then broadcast it to the network.
+- You have to manually broadcast a signed transaction to the network.
+  - Some wallets, like Ellipal, use digital screens to make this process more user-friendly. With this type of wallet, when you want to send a transaction, you enter the receiver’s address on the device and sign the transaction. The device then transforms that signed transaction into a QR code that can be scanned with an internet-connected device. Once you have the signed transaction, you can then broadcast it to the network.
 
-_What are the potential issues?_
+_What are the potential risks?_
 
 Because this type of wallet is completely isolated from any device capable of internet connectivity, they are not as convenient as hot wallets, and they require several steps to complete transactions. Additionally, the assets stored within this type of wallet remain untouched for a relatively long time. 
 
 _What are the benefits?_
+
 They function as a type of vault that cannot be easily accessed which strengthens its security. 
 
 >Reports confirm that over 80% of bitcoin’s supply is held in cold storage, which makes it a popular choice among bitcoin investors. 
