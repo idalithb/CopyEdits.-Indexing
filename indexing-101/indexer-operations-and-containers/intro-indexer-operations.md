@@ -54,13 +54,15 @@ You get a seed phrase, a 12-word recovery phrase, when you set up the wallet. Th
 
 ---
 
-Cold wallets, also known as cold storage solutions, are cryptocurrency wallets that are not connected to the internet. They protect your crypto by generating and storing private keys offline. It’s important to note that these keys are not the same as the seed phrase you generate every time you create a wallet (i.e., see hot wallets), but they are needed to sign a transaction and whoever holds them has authority to move that crypto to another address. 
+Cold wallets, also known as cold storage solutions, are cryptocurrency wallets that are not connected to the internet. They are essential because they reduce the risk of hackers stealing your funds by providing iron-clad security against online attack vectors such as software viruses, clipboard malware, and smart contract bugs.
+
+They protect your crypto by generating and storing private keys offline. It’s important to note that these keys are not the same as the seed phrase you generate every time you create a wallet (i.e., see hot wallets), but they are needed to sign a transaction and whoever holds them has authority to move that crypto to another address. 
 
 ### Types of Cold Wallets: ###
-  - Hardware Wallets: Physical devices, like USB drives, that store your cryptocurrency keys offline. which means they are immune to online attacks.
-  - Paper Wallets: A physical document that contains a public address for receiving cryptocurrency and a private key for spending or transferring the cryptocurrency. Since it's a physical item, it's immune to online threats. However, it must be stored securely to prevent physical theft or damage.
-  - Metal Wallets: Are made of durable materials like metal but are like paper wallets and store cryptocurrency private keys. They are resistant to physical damage from fire or water.
-  - Offline Software Wallets: These are installed on a computer that has never been connected to the internet. This isolation ensures that the wallet and its private keys are never exposed to online threats.
+  - **Paper Wallets:** Physical documents that include a pair of private and public keys (and sometimes a QR Code address) designed to store cryptocurrency. You generate the keys offline and print a copy of them. Since it's a physical item, it's considered a basic, archaic wallet, but it is offline making it immune to online threats and a cost-effective way to store cryptocurrency and move it across borders. However, it must be stored securely to prevent physical theft or damage.
+  - **Hardware Wallets:** Physical devices that use a secure smart card to generate and store cryptographic keys offline. The most popular hardware wallet companies are Ledger and Trezor, which build devices with screens and buttons that perform basic operations. They may require a physical connection with an external internet-connected device to initiate transactions or simply enable a secure connection via Bluetooth technology. They are the most widely adopted cold storage wallets because as long as you safeguard the wallet and seed phrase, there is minimal risk of losing funds to a security breach. However, you should purchase them from official sources to avoid human error in production or shipping. 
+  - **Metal Wallets:** Are made of durable materials like metal but are like paper wallets and store cryptocurrency private keys. They are resistant to physical damage from fire or water.
+  - **Offline Software Wallets:** These are installed on a computer that has never been connected to the internet. This isolation ensures that the wallet and its private keys are never exposed to online threats.
 
 **Pros:**
   - Eliminate the risk of theft or hacking
