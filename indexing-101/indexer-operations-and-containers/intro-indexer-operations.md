@@ -114,4 +114,10 @@ Additionally, cryptocurrency-related businesses such as exchanges and custodians
 
 Overall, a cold wallet can provide even greater security by integrating multi-signature support and additional passphrases.
 
+## Multisig Wallets ##
+
+Multisignature wallets, also sometimes called multisig vaults or safes, require two or more private keys to perform certain tasks. This increases the security of the funds stored in the wallet because it requires multiple parties to sign before sending any transactions. 
+
+The process of a multisig wallet works by requiring multiple signatures from a set of predetermined addresses, and if any one of these signatures is missing, the transaction will not be able to go through. 
+_Think of it as a safe with unique keys that must be used together to open it._
 
