@@ -121,3 +121,7 @@ Multisignature wallets, also sometimes called multisig vaults or safes, require 
 The process of a multisig wallet works by requiring multiple signatures from a set of predetermined addresses, and if any one of these signatures is missing, the transaction will not be able to go through. 
 _Think of it as a safe with unique keys that must be used together to open it._
 
+### Types: ###
+
+  - **Type one:** Require all parties to attest or sign to a transaction, most commonly three-key wallets
+  - **Type Two:** Require a certain number out of the total pool to participate for a transaction to process, for example, two of three or three of five
