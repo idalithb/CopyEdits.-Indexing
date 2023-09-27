@@ -111,3 +111,7 @@ They function as a type of vault that cannot be easily accessed which strengthen
 
 >Reports confirm that over 80% of bitcoin’s supply is held in cold storage, which makes it a popular choice among bitcoin investors. 
 Additionally, cryptocurrency-related businesses such as exchanges and custodians also adopt various forms of institutional-grade cold storage solutions.
+
+Overall, a cold wallet can provide even greater security by integrating multi-signature support and additional passphrases.
+
+
