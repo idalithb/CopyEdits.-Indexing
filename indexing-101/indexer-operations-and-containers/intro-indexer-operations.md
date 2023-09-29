@@ -123,8 +123,9 @@ _Think of it as a safe with unique keys that must be used together to open it._
 
 ### Types: ###
 
-  - **Type one:** Require all parties to attest or sign to a transaction, most commonly three-key wallets
-  - **Type Two:** Require a certain number out of the total pool to participate for a transaction to process, for example, two of three or three of five
+**Type one:** Require all parties to attest or sign to a transaction, most commonly three-key wallets
+
+**Type Two:** Require a certain number out of the total pool to participate for a transaction to process, for example, two of three or three of five
 
 **Important Distinction**
 
@@ -132,3 +133,8 @@ The process of signing transactions on multisig wallets has a different key desi
 
 Multisig wallets, on the other hand, are smart contract-based wallets. Rather than being endpoints controlled by a user, these smart wallets are controlled by code and governed on-chain by their owners. Because of this setup, multisig wallets are considered a _seedless_ form of self-custody. 
 
+**Pros**
+  - Provide a better experience for institutions and DAOs
+  - No ‘key person’ risk
+  - Greater transparency
+  - Buildable 
