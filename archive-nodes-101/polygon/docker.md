@@ -160,7 +160,7 @@ services:
 ###################################################################################### 
 
   erigon:
-    image: thorax/erigon:v2.48.1
+    image: thorax/erigon:v2.52.0
     container_name: erigon
     restart: unless-stopped
     user: root
@@ -215,7 +215,7 @@ services:
 ######################################################################################
 
   heimdalld:
-    image: 0xpolygon/heimdall:0.3.4
+    image: 0xpolygon/heimdall:1.0.2
     container_name: heimdalld
     restart: unless-stopped
     expose:
@@ -229,27 +229,8 @@ services:
       - --home /root/.heimdalld
       - --p2p.laddr=tcp://0.0.0.0:26656
       - --rpc.laddr=tcp://0.0.0.0:26657
-    volumes:
-      - /var/lib/heimdall:/root/.heimdalld:rw
-
-######################################################################################
-#####################              HEIMDALLR CONTAINER         #######################
-######################################################################################
-
-  heimdallr:
-    image: 0xpolygon/heimdall:0.3.4
-    container_name: heimdallr
-    restart: unless-stopped
-    command: |
-      - rest-server
-      - --home /root/.heimdalld
-      - --chain-id=137
-      - --laddr=tcp://0.0.0.0:1317
-      - --node=tcp://heimdalld:26657
-    expose:
-      - "1317" #REST
-    networks:
-      - monitor-net
+      - --chain=mainnet
+      - --rest-server
     volumes:
       - /var/lib/heimdall:/root/.heimdalld:rw
 ```
