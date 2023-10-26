@@ -1,7 +1,7 @@
 # Wallets Overview
 It is crucial to understand that **wallets** are essential and necessary tools to securely manage and access Ethereum accounts. 
 
-Ethereum wallets within the Web3 ecosystem are applications that allow you access to your account. They function like physical wallets where your identification and assets are held. Wallets allow you to sign into apps, view balances, send transactions, and verify your I.D. 
+Ethereum wallets within the Web3 ecosystem are applications that function like physical wallets where your identification and assets are held. Wallets allow you to sign into apps, view balances, send transactions, and verify your I.D. 
 
 > It’s helpful to think of wallets as windows to view and manage your assets on Ethereum, and _**not**_ as an Ethereum account. So, a wallet allows you to use the keys associated with your Ethereum account to interact with it. 
 
