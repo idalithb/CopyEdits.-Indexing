@@ -107,9 +107,8 @@ services:
 ###################################################################################### 
 
   arbitrum-nitro:
-    image: 'offchainlabs/nitro-node:v2.0.14-2baa834-slim-amd64'
+    image: 'offchainlabs/nitro-node:v2.1.3-e815395-slim-amd64'
     container_name: nitro
-    restart: always
     stop_grace_period: 30s
     user: root
     volumes:
