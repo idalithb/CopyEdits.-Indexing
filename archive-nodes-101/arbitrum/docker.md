@@ -119,15 +119,17 @@ services:
     command:
       - --init.url=https://snapshot.arbitrum.foundation/arb1/nitro-archive.tar
       - --node.caching.archive
-      - --persistent.chain=/arbitrum-node/data/
-      - --persistent.global-config=/arbitrum-node/
       - --node.rpc.classic-redirect=http://arbitrum-classic:8547/
-      - --l1.url=${ARBITRUM_L1_URL}
-      - --l2.chain-id=42161
+      - --parent-chain.connection.url=${ARBITRUM_L1_URL}
+      - --chain.id=42161
       - --http.api=net,web3,eth,debug
       - --http.corsdomain=*
       - --http.addr=0.0.0.0
       - --http.vhosts=*
+      - --ws.port=8547
+      - --file-logging.local-time=true
+      - --ws.addr=0.0.0.0
+      - --ws.origins=*
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
