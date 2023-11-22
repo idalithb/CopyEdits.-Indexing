@@ -6,7 +6,7 @@ description: 'Authors: [Vince | Nodeify]'
 
 ## System Requirements
 
-<table data-full-width="false"><thead><tr><th align="center">CPU</th><th width="140" align="center">OS</th><th width="180" align="center">RAM</th><th align="center">DISK</th></tr></thead><tbody><tr><td align="center">4+ core CPU</td><td align="center">Ubuntu 22.04</td><td align="center">16GB+ for Nitro and 32GB+ for Classic</td><td align="center">>= 5TB SSD/NVME</td></tr></tbody></table>
+<table data-full-width="false"><thead><tr><th align="center">CPU</th><th width="140" align="center">OS</th><th width="180" align="center">RAM</th><th align="center">DISK</th></tr></thead><tbody><tr><td align="center">4+ core CPU</td><td align="center">Ubuntu 22.04</td><td align="center">16GB+ for Nitro and 32GB+ for Classic</td><td align="center">>= 8TB SSD/NVME</td></tr></tbody></table>
 
 ## Offchain Labs ⛓️
 
@@ -99,6 +99,7 @@ networks:
 volumes:
   arbitrum-nitro:
   arbitrum-classic:
+  traefik_letsencrypt:
 
 services:
 
@@ -107,8 +108,9 @@ services:
 ###################################################################################### 
 
   arbitrum-nitro:
-    image: 'offchainlabs/nitro-node:v2.1.3-e815395-slim-amd64'
+    image: 'offchainlabs/nitro-node:v2.0.14-2baa834-slim-amd64'
     container_name: nitro
+    restart: unless-stopped
     stop_grace_period: 30s
     user: root
     volumes:
@@ -119,18 +121,15 @@ services:
     command:
       - --init.url=https://snapshot.arbitrum.foundation/arb1/nitro-archive.tar
       - --node.caching.archive
+      - --persistent.chain=/arbitrum-node/data/
+      - --persistent.global-config=/arbitrum-node/
       - --node.rpc.classic-redirect=http://arbitrum-classic:8547/
-      - --parent-chain.connection.url=${ARBITRUM_L1_URL}
-      - --chain.id=42161
+      - --l1.url=${ARBITRUM_L1_URL}
+      - --l2.chain-id=42161
       - --http.api=net,web3,eth,debug
       - --http.corsdomain=*
       - --http.addr=0.0.0.0
       - --http.vhosts=*
-      - --ws.port=8547
-      - --file-logging.local-time=true
-      - --ws.addr=0.0.0.0
-      - --ws.origins=*
-    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.arbitrum.loadbalancer.server.port=8547"
@@ -174,11 +173,10 @@ services:
     image: traefik:latest
     container_name: traefik
     restart: always
-    expose:
-      - "8082"
     ports:
       - "443:443"
-      - "80:80"
+    networks:
+      - monitor-net
     command:
       - "--api=true"
       - "--api.insecure=true"
@@ -186,19 +184,13 @@ services:
       - "--log.level=DEBUG"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.file.filename=/dynamic_config.yml"
       - "--entrypoints.websecure.address=:443"
-      - "--entryPoints.metrics.address=:8082"
-      - "--metrics.prometheus.entryPoint=metrics"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
       - "--certificatesresolvers.myresolver.acme.email=$EMAIL"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     volumes:
-      - "./traefik/letsencrypt:/letsencrypt"
-      - "./traefik/config/dynamic_config.yml:/dynamic_config.yml"
+      - "traefik_letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-    networks:
-      - monitor-net
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.ipwhitelist.ipwhitelist.sourcerange=$WHITELIST"

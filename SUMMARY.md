@@ -12,6 +12,7 @@
 ## ⌨ Archive Nodes 101
 
 * [⏫ Arbitrum](archive-nodes-101/arbitrum/README.md)
+  * [💻 Baremetal](archive-nodes-101/arbitrum/baremetal.md)
   * [🐳 Docker](archive-nodes-101/arbitrum/docker.md)
 * [🏔 Avalanche](archive-nodes-101/avalanche/README.md)
   * [🐳 Docker](archive-nodes-101/avalanche/docker.md)
