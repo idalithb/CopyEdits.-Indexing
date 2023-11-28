@@ -80,7 +80,7 @@ ctrl + x and y to save file
 
 ### Make scripts directory
 
-```
+```bash
 cd ~/optimism
 mkdir scripts
 cd scripts #Goto scripts directory
@@ -340,8 +340,8 @@ docker-compose up -d
 Use `docker logs` to monitor your geth and op nodes. The `-f` flag ensures you are following the log output
 
 ```
-docker logs opgeth -f
-docker logs opnode -f
+docker logs opgeth -f --tail 50
+docker logs opnode -f --tail 50
 ```
 
 ## Test Optimism RPC 🧪
