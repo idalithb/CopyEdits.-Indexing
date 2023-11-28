@@ -37,6 +37,7 @@
     * [🐳 Docker](archive-nodes-101/gnosis/erigon/docker.md)
   * [🧠 Nethermind](archive-nodes-101/gnosis/nethermind/README.md)
     * [💻 Baremetal](archive-nodes-101/gnosis/nethermind/baremetal.md)
-* [🔴 Optimism](archive-nodes-101/optimism.md)
+* [🔴 Optimism](archive-nodes-101/optimism/README.md)
+  * [🐳 Docker](archive-nodes-101/optimism/docker.md)
 * [♾ Polygon](archive-nodes-101/polygon/README.md)
   * [🐳 Docker](archive-nodes-101/polygon/docker.md)
