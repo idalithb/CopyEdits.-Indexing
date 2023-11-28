@@ -1,3 +1,7 @@
+---
+description: 'Authors: [Vince | Nodeify]'
+---
+
 # 🐳 Docker
 
 ## System Requirements
