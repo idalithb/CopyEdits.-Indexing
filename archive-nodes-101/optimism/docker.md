@@ -63,12 +63,16 @@ sudo nano .env
 
 Paste the following into the file.
 
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 EMAIL={YOUR_EMAIL} #Your email to receive SSL renewal emails
-DOMAIN={YOUR_DOMAIN} #Domain of your reth node you set earlier, polygon.indexerdao.com
-WHITELIST={YOUR_REMOTE_MACHINE_IP} # Remote IP's allowed to connect to RPC
-DATA_TRANSPORT_LAYER__RPC_ENDPOINT={DATA_TRANSPORT_LAYER__RPC_ENDPOINT} #L1 RPC
+DOMAIN={YOUR_DOMAIN}
+WHITELIST={YOUR_REMOTE_MACHINE_IP}
+DATA_TRANSPORT_LAYER__RPC_ENDPOINT={RPC_ENDPOINT_OF_ETHEREUM_L1_NODE} # L1 RPC
+NETWORK_NAME={MAINNET}
+OP_NODE__RPC_TYPE={BASIC} #default is basic (other options are erigon, alchemy, quicknode, infura, parity, nethermind, debug_geth, any)
 ```
+{% endcode %}
 
 {% hint style="info" %}
 ctrl + x and y to save file
