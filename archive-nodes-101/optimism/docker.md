@@ -329,7 +329,7 @@ services:
 ctrl + x and y to save file
 {% endhint %}
 
-### Run Base Node
+### Run Optimism Node
 
 ```bash
 docker-compose up -d
