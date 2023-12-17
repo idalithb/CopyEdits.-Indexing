@@ -381,6 +381,13 @@ make -j4 nimbus_beacon_node
 You can increase `-j4` (`-j32`) with higher or lower integer depending on your host machine ram to decrease build time. Omit `-j4` on systems with 4GB of memory or less.
 {% endhint %}
 
+### Alternatively, extract the binary from the precompiled docker images:
+
+```bash
+mkdir -p /root/nimbus-eth2/build/
+sudo docker cp $(sudo docker run -it -d ghcr.io/gnosischain/gnosis-nimbus-eth2:latest):/home/user/nimbus_beacon_node /root/nimbus-eth2/build/
+```
+
 ### Configure Nimbus
 
 Append a systemd service configuration for the Nimbus Gnosis Service to the "/etc/systemd/system/nimbus.service" file, specifying its description, dependencies, and executable parameters for proper execution and monitoring.
