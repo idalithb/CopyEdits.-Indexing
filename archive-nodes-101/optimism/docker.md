@@ -88,6 +88,7 @@ cd scripts #Goto scripts directory
 
 ### Download all the helper scripts into scripts directory
 
+{% code overflow="wrap" %}
 ```bash
 cat << EOF | wget -i -
 https://raw.githubusercontent.com/InfraDAO/scripts/main/optimism/Dockerfile.bedrock-init
@@ -99,6 +100,13 @@ https://raw.githubusercontent.com/InfraDAO/scripts/main/optimism/start-op-geth.s
 https://raw.githubusercontent.com/InfraDAO/scripts/main/optimism/start-op-node.sh
 https://raw.githubusercontent.com/InfraDAO/scripts/main/optimism/utils.sh
 EOF
+```
+{% endcode %}
+
+### Make Scripts Executable
+
+```bash
+chmod +x *.sh
 ```
 
 ### Create docker-compose.yml
