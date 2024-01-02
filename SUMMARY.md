@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Indexing 101 Overview](README.md)
+* [InfraDAO Overview](README.md)
 
 ## ⌨ Indexing 101
 

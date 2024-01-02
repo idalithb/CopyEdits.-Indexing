@@ -14,7 +14,7 @@ However, Ethereum is in the process of transitioning to a new consensus algorith
 
 In summary, the Ethereum consensus layer is the foundational mechanism that enables the network to maintain a consistent and accurate version of the blockchain, and it is implemented through a consensus algorithm such as PoW or PoS.
 
-
+***
 
 #### What is the Ethereum Execution Layer?
 
@@ -36,7 +36,7 @@ The execution layer, on the other hand, is responsible for executing and process
 
 In summary, while the consensus layer ensures the consistency and security of the network, the execution layer enables developers to create and deploy decentralized applications on the blockchain.
 
-
+***
 
 ### Node Clients
 
@@ -75,7 +75,7 @@ Some popular Ethereum consensus layer clients include Lighthouse, Prysm, Nimbus,
 
 Each of these clients is designed to implement the Ethereum consensus protocol, which is responsible for maintaining network consensus and ensuring the integrity of the blockchain. They provide different features and benefits, depending on the needs of the developer or organization using them.
 
-
+***
 
 ### Setting Up The Client
 
