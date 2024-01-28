@@ -10,7 +10,9 @@ description: 'Authors: [Vince | Nodeify]'
 
 ## zkLend
 
-&#x20;[https://github.com/starknet-graph/firehose-starknet](https://github.com/starknet-graph/firehose-starknet)
+### [https://github.com/eqlabs/pathfinder](https://github.com/eqlabs/pathfinder)
+
+### [https://github.com/starknet-graph/firehose-starknet](https://github.com/starknet-graph/firehose-starknet)
 
 ### Pre-requisites
 
