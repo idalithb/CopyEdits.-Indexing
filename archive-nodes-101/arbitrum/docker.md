@@ -97,9 +97,9 @@ networks:
     driver: bridge
 
 volumes:
-  arbitrum-nitro:
-  arbitrum-classic:
-  traefik_letsencrypt:
+  arbitrum-nitro: {}
+  arbitrum-classic: {}
+  traefik_letsencrypt: {}
 
 services:
 
