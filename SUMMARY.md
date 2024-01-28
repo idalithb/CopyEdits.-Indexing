@@ -41,3 +41,7 @@
   * [🐳 Docker](archive-nodes-101/optimism/docker.md)
 * [♾ Polygon](archive-nodes-101/polygon/README.md)
   * [🐳 Docker](archive-nodes-101/polygon/docker.md)
+* [🌟 Starknet](archive-nodes-101/starknet/README.md)
+  * [🧑🚒 Firehose](archive-nodes-101/starknet/firehose/README.md)
+    * [💻 Baremetal](archive-nodes-101/starknet/firehose/baremetal.md)
+    * [🐳 Docker](archive-nodes-101/starknet/firehose/docker.md)
