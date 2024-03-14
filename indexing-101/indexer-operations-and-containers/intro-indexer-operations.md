@@ -10,8 +10,8 @@ However, most wallet products will let you generate an Ethereum account, so you 
 **Types of wallets:**
   - Physical hardware wallets are physical devices that allow you to keep your crypto offline and they are the most secure.
   - Mobile application wallets allow you to easily access your accounts.
-  - Browser wallets are web applications that allow you interact with your account directly on a browser.
-  - Broser extension wallets are extensions that you download to interact with your account through a browser.
+  - Browser wallets are web applications that allow you to interact with your account directly on a browser.
+  - Browser extension wallets are extensions that you download to interact with your account through a browser.
   - Desktop applications allow you to manage your funds from your macOS, Windows, or Linux system. 
 
 _Keep this in mind as we move forward, and we review the differences between hot and cold wallets._
