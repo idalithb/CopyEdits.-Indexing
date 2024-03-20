@@ -24,6 +24,6 @@ Indexers perform the following roles:
 Navigate crucial tools for Indexers
 | Lessons  | Details |
 | ------------- | ------------- |
-| Linux and Ethereum Clients  | Introduction to Linux; Getting Started with Ethereum Clients; Lab 1  |
+|  [Linux and Ethereum Clients](#indexing-101)  | Introduction to Linux; Getting Started with Ethereum Clients; Lab 1  |
 
 
