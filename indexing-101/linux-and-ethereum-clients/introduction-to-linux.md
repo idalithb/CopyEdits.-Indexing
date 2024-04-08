@@ -1,8 +1,8 @@
 # Introduction to Linux
 
-Linux is a free and open-source operating system widely used in modern computing systems, including servers, supercomputers, mobile devices, and embedded devices. Compared to proprietary alternatives, Linux provides a more customizable and flexible computing environment, allowing users to modify and optimize the system to suit their specific needs. It also offers robust security features, making it a popular choice for web servers and other critical infrastructure. 
+Linux is a free and open-source operating system widely used in modern computing systems, including servers, supercomputers, mobile devices, and embedded devices. Compared to proprietary alternatives, Linux provides a more customizable and flexible computing environment. Users can modify and optimize Linux to match their specific needs. Additionally, its robust security features make it a popular choice for web servers and other critical infrastructure.
 
-Linux is also widely used in web3 applications due to its ability to support decentralized and distributed computing systems. With its modular and scalable design, Linux allows developers to build decentralized applications that can run on a variety of devices and architectures, making it a key component in the web3 technology stack.
+Linux is widely used in web3 applications due to its ability to support decentralized and distributed computing systems.Its modular and scalable design allows developers to build decentralized applications that can run on a variety of devices and architectures, which has made it a key component in the web3 technology stack.
 
 This lesson will cover fundamental skills and commands for working with Linux, including creating and manipulating files and directories, managing permissions and security, and using key commands to navigate and manage the system.
 
