@@ -1,6 +1,6 @@
 # Get Started
 
-Learn about Indexers, key entities to the Graph’s infrastructure. 
+Learn about Indexers, key entities in the Graph’s infrastructure. 
 
 <details>
 
